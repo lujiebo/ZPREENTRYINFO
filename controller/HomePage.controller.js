@@ -836,7 +836,7 @@ sap.ui.define([
 								encoderOptions = '0.1';
 							}
 							this.compress(file, encoderOptions, function (imgBase64) {
-								//存储转换后的base64编码  
+								//存储转换后的base64编码 
 								that.saveBase64(imgBase64);
 							});
 							return;
