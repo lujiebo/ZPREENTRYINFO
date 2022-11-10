@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<!--contentWidth="40em"-->
+	<Dialog id="ContractDialog" title="{Image>/TitleMyFile}" resizable="true" draggable="true" contentWidth="1000px" contentHeight="1000px">
+		<!--<ImageContent class="sapUiLargeMarginTop sapUiLargeMarginBottom" src="{Image>/HREF}"-->
+		<!--	description="{ path: 'Image>/PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }" press="press"></ImageContent>width="20em" height="20em"-->
+		<!--<Image src="{Image>/HREF}"  />-->
+		<ImageContent src="{Image>/HREF}" description="{Image>/TitleMyFile}"></ImageContent>
+		<beginButton>
+			<Button text="{i18n>CloseImage}" press="onCloseImageDialog"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

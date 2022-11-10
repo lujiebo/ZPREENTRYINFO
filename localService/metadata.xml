@@ -1,0 +1,118 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZSY_HR_PRE_ENTRY_SRV" xml:lang="zh" sap:schema-version="1">
+            <EntityType Name="ZPEOPLE_SEARCH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PERNR"/>
+                </Key>
+                <Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="员工编号" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_ZT" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="状态" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NACHN" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="姓名" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CARDID" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="员工卡号" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PLANS" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="岗位" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ORGEH" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="部门" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_BDSJ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="报道日期" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_TJSJ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="体检时间" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_TJYY" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="体检医院" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_SFZS" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="是否住宿" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_SQLX" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="申请类型" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_SSMC" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="宿舍名称" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CTTYP" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="合同类型" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZZYRDW" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="合同主体单位" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BEGDA_0016" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="合同起始日期" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_HTQXN" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="合同期限（年）" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_SYKSRQ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="试用期开始日期" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_SYQX" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="试用期限（月）" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WERKS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="人事范围" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BTRTL" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="人事子范围" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PERSG" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="员工组" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PERSK" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="员工子组" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_CQ" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="厂区" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_RZRQ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="入职时间" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PHONE" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="联系电话" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_JRYRZPTSJ" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="进入预入职平台时间" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_JRLY" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="进入来源" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZSEARCH_HELP" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="F4ID"/>
+                    <PropertyRef Name="KEY1"/>
+                </Key>
+                <Property Name="F4ID" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="F4 ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="KEY1" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="KEY2" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="key" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE1" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE2" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE3" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE4" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE5" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE6" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE7" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE8" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE9" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VALUE10" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEntry_People_Deep" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ZZAction"/>
+                </Key>
+                <Property Name="ZZAction" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="操作" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ename" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="姓名" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Phone" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="手机号" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="navTo0002" Relationship="ZSY_HR_PRE_ENTRY_SRV.navTo0002" FromRole="FromRole_navTo0002" ToRole="ToRole_navTo0002"/>
+            </EntityType>
+            <EntityType Name="ZEntry_People_0000" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PERNR"/>
+                </Key>
+                <Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="员工编号" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MASSN" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="操作类型" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MASSG" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="操作原因" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="STAT2" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="雇佣" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ZEntry_People_0002" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PERNR"/>
+                </Key>
+                <Property Name="PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="员工编号" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NACHN" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="姓名" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NAME2" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="曾用姓名" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GESCH" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="性别" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GBDAT" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="出生日期" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GBLND" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="国家/地区" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZZSTATE" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="籍贯省" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZZCITY" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="籍贯市" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZZORT01" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="籍贯县" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_MZ" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="民族" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FAMST" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="婚姻状况" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FATXT" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="婚姻状况文本" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HUKOT" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="户口性质" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_JJLXRXM" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="紧急联系人姓名" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ZHR_JJLXRDH" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="紧急联系人电话" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="navTo0002" sap:content-version="1">
+                <End Type="ZSY_HR_PRE_ENTRY_SRV.ZEntry_People_Deep" Multiplicity="1" Role="FromRole_navTo0002"/>
+                <End Type="ZSY_HR_PRE_ENTRY_SRV.ZEntry_People_0002" Multiplicity="*" Role="ToRole_navTo0002"/>
+            </Association>
+            <EntityContainer Name="ZSY_HR_PRE_ENTRY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZPEOPLE_SEARCHSet" EntityType="ZSY_HR_PRE_ENTRY_SRV.ZPEOPLE_SEARCH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZSEARCH_HELPSet" EntityType="ZSY_HR_PRE_ENTRY_SRV.ZSEARCH_HELP" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEntry_People_DeepSet" EntityType="ZSY_HR_PRE_ENTRY_SRV.ZEntry_People_Deep" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEntry_People_0000Set" EntityType="ZSY_HR_PRE_ENTRY_SRV.ZEntry_People_0000" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZEntry_People_0002Set" EntityType="ZSY_HR_PRE_ENTRY_SRV.ZEntry_People_0002" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="navTo0002Set" Association="ZSY_HR_PRE_ENTRY_SRV.navTo0002" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZEntry_People_DeepSet" Role="FromRole_navTo0002"/>
+                    <End EntitySet="ZEntry_People_0002Set" Role="ToRole_navTo0002"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" HREF="./sap/ZSY_HR_PRE_ENTRY_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" HREF="./sap/ZSY_HR_PRE_ENTRY_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

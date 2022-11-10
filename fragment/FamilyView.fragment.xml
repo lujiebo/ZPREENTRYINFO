@@ -1,0 +1,113 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<t:Table id="Family" rows="{path: 'Family>/'}" visibleRowCount="5" ariaLabelledBy="title" selectionMode="MultiToggle"
+		enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice">
+		<t:toolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton id="newFamily" icon="sap-icon://document" tooltip="新建" press="onNewItem"/>
+				<OverflowToolbarButton id="deleteFamily" icon="sap-icon://delete" tooltip="删除" press="onDeleteItem"/>
+			</OverflowToolbar>
+		</t:toolbar>
+		<t:columns>
+			<t:Column width="10rem" filterProperty="FAMSA" sortProperty="FAMSA">
+				<Label text="称谓"/>
+				<t:template>
+					<Select forceSelection="false" selectedKey="{Family>FAMSA}" items="{oDropModel>/famsaDrop}"  change="handleChange1">
+						<core:Item key="{oDropModel>SUBTY}" text="{oDropModel>STEXT}" />
+					</Select>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Family>FAMSA}" items="{oDropModel>/famsaDrop}" change="handleChange">
+						<core:Item key="{oDropModel>SUBTY}" text="{oDropModel>STEXT}"/>
+					</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="FANAM" sortProperty="FANAM">
+				<Label text="姓名"/>
+				<t:template>
+					<Input value="{Family>FANAM}" maxLength="20"/>
+				</t:template>
+			</t:Column>
+			<!--<t:Column width="6rem" filterProperty="GESCH" sortProperty="GESCH">-->
+			<!--	<Label text="性别"/>-->
+			<!--	<t:template>-->
+			<!--		<ComboBox showSecondaryValues="true" selectedKey="{Family>GESCH}" items="{oDropModel>/geschDrop}" change="handleChange"> -->
+			<!--			<core:Item key="{oDropModel>GESCH}" text="{oDropModel>GESCH_desc}"/>-->
+			<!--		</ComboBox>					-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+			<!--<t:Column width="10rem" filterProperty="GBDAT" sortProperty="GBDAT">-->
+			<!--	<Label text="出生日期"/>-->
+			<!--	<t:template>-->
+			<!--		<DatePicker valueFormat="yyyyMMdd" placeholder="出生日期 ..." value="{Family>GBDAT}"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+			<t:Column width="16rem" filterProperty="ZZGZDW" sortProperty="ZZGZDW">
+				<Label text="工作单位"/>
+				<t:template>
+					<Input value="{Family>ZZGZDW}" maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="16rem" filterProperty="LAND1" sortProperty="LAND1">
+				<Label text="联系地址-国家"/>
+				<t:template>
+					<Input id="TAB_LAND1_0021" value="{Family>LAND1} {Family>LANDX}" maxLength="40" showValueHelp="true" valueHelpRequest="ValueHelpTable" valueHelpOnly="true"/>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Family>LAND1}" items="{oDropModel>/land1Drop}">-->
+					<!--	<core:Item key="{oDropModel>Land1}" text="{oDropModel>Landx}"/>-->
+					<!--</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="16rem" filterProperty="ZHR_LXS" sortProperty="ZHR_LXS">
+				<Label text="联系地址-省"/>
+				<t:template>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Family>STATE}" items="{oDropModel>/stateDrop}">-->
+					<!--	<core:Item key="{oDropModel>Bland}" text="{oDropModel>Bezei}"/>-->
+					<!--</ComboBox>-->
+					<Input id="TAB_ZHR_LXS_0021" value="{Family>ZHR_LXS} {Family>ZHR_LXS_DESC}" maxLength="40" showValueHelp="true" valueHelpRequest="ValueHelpTable" valueHelpOnly="true"/>
+				</t:template>
+			</t:Column>
+			<!--<t:Column width="20rem" filterProperty="ZHR_LXS_DESC" sortProperty="ZHR_LXS_DESC">-->
+			<!--	<Label text="联系地址-省描述"/>-->
+			<!--	<t:template>-->
+			<!--		<Input value="{Family>ZHR_LXS_DESC}" editable="false"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+			<t:Column width="16rem" filterProperty="ZHR_LXCS" sortProperty="ZHR_LXCS">
+				<Label text="联系地址-城市"/>
+				<t:template>
+					<Input id="TAB_ZHR_LXCS_0021" value="{Family>ZHR_LXCS} {Family>ZHR_LXCS_DESC}" maxLength="40" showValueHelp="true" valueHelpRequest="ValueHelpTable" valueHelpOnly="true"/>
+				</t:template>
+			</t:Column>
+			<!--<t:Column width="20rem" filterProperty="ZHR_LXCS_DESC" sortProperty="ZHR_LXCS_DESC">-->
+			<!--	<Label text="联系地址-城市描述"/>-->
+			<!--	<t:template>-->
+			<!--		<Input value="{Family>ZHR_LXCS_DESC}" editable="false"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+			<t:Column width="20rem" filterProperty="ZHR_XXDZ" sortProperty="ZHR_XXDZ">
+				<Label text="联系地址-详细地"/>
+				<t:template>
+					<Input value="{Family>ZHR_XXDZ}" maxLength="60"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="14rem" filterProperty="TELNR" sortProperty="TELNR">
+				<Label text="手机号码"/>
+				<t:template>
+					<Input value="{Family>TELNR}" maxLength="13"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ZHR_SFSYYG" sortProperty="ZHR_SFSYYG">
+				<Label text="是否舜宇集团员工"/>
+				<t:template>
+					<!--{Family>ZHR_SFSYYG} -->
+					<CheckBox id="TAB_ZHR_SFSYYG" selected="{ path: 'Family>ZHR_SFSYYG', formatter: '.formatACAQM' }" select="onChangeEvent"/>
+				</t:template>
+			</t:Column>			
+			<!--<t:Column width="10rem" filterProperty="ZHR_SFSYYG" sortProperty="ZHR_SFSYYG">-->
+			<!--	<Label text="是否舜宇集团员工"/>-->
+			<!--	<t:template>-->
+			<!--		<CheckBox selected="{Family>ZHR_SFSYYG}"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+		</t:columns>
+	</t:Table>
+</core:FragmentDefinition>

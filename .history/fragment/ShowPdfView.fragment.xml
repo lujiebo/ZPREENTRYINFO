@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<!--contentWidth="40em"-->
+	<Dialog id="ContractDialog" title="{Image>/TitleMyFile}" resizable="true" draggable="true" contentWidth="1000px" contentHeight="1000px">
+		<!--<core:HTML id="idFrame" content="{Image>/Content}"/>-->
+		<PDFViewer source="{Image>/HREF}" title="{Image>/TitleMyFile}" height="100%">
+			<layoutData>
+				<FlexItemData growFactor="1"/>
+			</layoutData>
+		</PDFViewer>
+		<beginButton>
+			<Button text="{i18n>ClosePdf}" press="onConfirmPdf"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

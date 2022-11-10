@@ -1,0 +1,253 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<t:Table id="Educational" rows="{path: 'Educational>/'}" visibleRowCount="4" ariaLabelledBy="title" selectionMode="MultiToggle"
+		enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice">
+		<t:toolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton id="newEducational" icon="sap-icon://document" tooltip="新建" press="onNewItem"/>
+				<OverflowToolbarButton id="deleteEducational" icon="sap-icon://delete" tooltip="删除" press="onDeleteItem"/>
+			</OverflowToolbar>
+		</t:toolbar>
+		<t:columns>
+			<t:Column width="10rem" filterProperty="ZHR_RXRQ" sortProperty="ZHR_RXRQ">
+				<Label text="入学日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd" placeholder="入学日期 ..." value="{Educational>ZHR_RXRQ}"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="BEGDA" sortProperty="BEGDA">
+				<Label text="毕业日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd" placeholder="毕业日期 ..." value="{Educational>BEGDA}"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="INSTI" sortProperty="INSTI">
+				<Label text="毕业学校"/>
+				<t:template>
+					<Input value="{Educational>INSTI}" maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="FACH3" sortProperty="FACH3">
+				<Label text="专业名称"/>
+				<t:template>
+					<Input value="{Educational>FACH3}"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACAQU" sortProperty="ACAQU">
+				<Label text="学历"/>
+				<t:template>
+					<ComboBox showSecondaryValues="true" selectedKey="{Educational>ACAQU}" items="{oDropModel>/acaquDrop}">
+						<core:Item key="{oDropModel>Acaqu}" text="{oDropModel>Acaqt}"/>
+					</ComboBox>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ZHR_ZYLX" sortProperty="ZHR_ZYLX">
+				<Label text="专业类型"/>
+				<t:template>
+					<ComboBox showSecondaryValues="true" selectedKey="{Educational>ZHR_ZYLX}" items="{oDropModel>/zhr_zylxDrop}">
+						<core:Item key="{oDropModel>ZhrDm}" text="{oDropModel>ZhrDmms}"/>
+					</ComboBox>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="SLABS" sortProperty="SLABS">
+				<Label text="学位"/>
+				<t:template>
+					<ComboBox showSecondaryValues="true" selectedKey="{Educational>SLABS}" items="{oDropModel>/slabsDrop}">
+						<core:Item key="{oDropModel>Slabs}" text="{oDropModel>Stext}"/>
+					</ComboBox>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="INSMO" sortProperty="INSMO">
+				<Label text="学习类型"/>
+				<t:template>
+					<ComboBox showSecondaryValues="true" selectedKey="{Educational>INSMO}" items="{oDropModel>/insmoDrop}">
+						<core:Item key="{oDropModel>Insmo}" text="{oDropModel>Insmt}"/>
+					</ComboBox>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACQID" sortProperty="ACQID">
+				<Label text="学历证书编号"/>
+				<t:template>
+					<Input value="{Educational>ACQID}"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACCID" sortProperty="ACCID">
+				<Label text="学位证书编号"/>
+				<t:template>
+					<Input value="{Educational>ACCID}"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACAQM" sortProperty="ACAQM">
+				<Label text="是否最高学历"/>
+				<t:template>
+					<CheckBox selected="{Educational>ACAQM}"/>
+				</t:template>
+			</t:Column>
+		</t:columns>
+	</t:Table>
+	<!--<Table id="Educational" mode="MultiSelect" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'Name' } }">-->
+	<!--<Table id="Educational" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"-->
+	<!--	growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"-->
+	<!--	delete="onDeleteEducational" items="{ path: 'Educational>/' }">-->
+	<!--	<headerToolbar>-->
+	<!--		<OverflowToolbar>-->
+	<!--			<ToolbarSpacer/>-->
+	<!--			<OverflowToolbarButton id="newEducational" icon="sap-icon://document" tooltip="新建" press="onNewItem"/>-->
+	<!--		</OverflowToolbar>-->
+	<!--	</headerToolbar>-->
+	<!--	<columns>-->
+	<!--入学日期-->
+	<!--		<Column id="TableZhr_rxrq" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="入学日期"/>-->
+	<!--		</Column>-->
+	<!--毕业日期-->
+	<!--		<Column id="BEGDA0022" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="毕业日期"/>-->
+	<!--		</Column>-->
+	<!--毕业学校-->
+	<!--		<Column id="INSTI" demandPopin="true">-->
+	<!--			<Text text="毕业学校"/>-->
+	<!--		</Column>-->
+	<!--专业名称-->
+	<!--		<Column id="FACH3" demandPopin="true">-->
+	<!--			<Text text="专业名称"/>-->
+	<!--		</Column>-->
+	<!--学历-->
+	<!--		<Column id="ACAQU" demandPopin="true">-->
+	<!--			<Text text="学历"/>-->
+	<!--		</Column>-->
+	<!--专业类型-->
+	<!--		<Column id="ZHR_ZYLX" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="专业类型"/>-->
+	<!--		</Column>-->
+	<!--学位-->
+	<!--		<Column id="SLABS" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学位"/>-->
+	<!--		</Column>-->
+	<!--学习类型-->
+	<!--		<Column id="INSMO" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学习类型"/>-->
+	<!--		</Column>-->
+	<!--学历证书编号-->
+	<!--		<Column id="ACQID" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学历证书编号"/>-->
+	<!--		</Column>-->
+	<!--学位证书编号-->
+	<!--		<Column id="ACCID" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学位证书编号"/>-->
+	<!--		</Column>-->
+	<!--是否最高学历-->
+	<!--		<Column id="ACAQM" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="是否最高学历"/>-->
+	<!--		</Column>-->
+	<!--	</columns>-->
+	<!--	<items>-->
+	<!--		<ColumnListItem press="onDisplayItem3" id="cli3" type="Active">-->
+	<!--			<cells>-->
+	<!--				<DatePicker valueFormat="yyyy-MM-dd" placeholder="入学日期 ..." value="{Educational>ZHR_RXRQ}"/>-->
+	<!--				<DatePicker valueFormat="yyyy-MM-dd" placeholder="毕业日期 ..." value="{Educational>BEGDA}"/>-->
+	<!--				<Input value="{Educational>INSTI}" maxLength="40"/>-->
+	<!--				<Input value="{Educational>FACH3}"/>-->
+	<!--				<ComboBox showSecondaryValues="true" selectedKey="{Educational>ACAQU}" items="{oDropModel>/acaquDrop}">-->
+	<!--					<core:Item key="{oDropModel>ICTYP}" text="{oDropModel>ICTXT}"/>-->
+	<!--				</ComboBox>-->
+	<!--				<ComboBox showSecondaryValues="true" selectedKey="{Educational>ZHR_ZYLX}" items="{oDropModel>/zhr_zylxDrop}">-->
+	<!--					<core:Item key="{oDropModel>ICTYP}" text="{oDropModel>ICTXT}"/>-->
+	<!--				</ComboBox>-->
+	<!--				<ComboBox showSecondaryValues="true" selectedKey="{Educational>SLABS}" items="{oDropModel>/slabsDrop}">-->
+	<!--					<core:Item key="{oDropModel>ICTYP}" text="{oDropModel>ICTXT}"/>-->
+	<!--				</ComboBox>-->
+	<!--				<Input value="{Educational>INSMO}"/>-->
+	<!--				<Input value="{Educational>ACQID}"/>-->
+	<!--				<Input value="{Educational>ACCID}"/>-->
+	<!--<Input value="{Educational>ACAQM}" />-->
+	<!--				<CheckBox selected="true"/>-->
+	<!--<Text text="{Educational>BEGDA}"/>-->
+	<!--<Text text="{Educational>INSTI}"/>-->
+	<!--<Text text="{Educational>FACH3}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--<Text text="{Educational>}"/>-->
+	<!--			</cells>-->
+	<!--		</ColumnListItem>-->
+	<!--	</items>-->
+	<!--</Table>-->
+	<!--<Table id="Educational" width="auto" mode="None" noDataText="{worklistView>/tableNoDataText}"-->
+	<!--	busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" -->
+	<!--	selectionChange="selectionChange" items="{ path: 'Educational>/' }">-->
+	<!--	<headerToolbar>-->
+	<!--		<OverflowToolbar>-->
+	<!--			<ToolbarSpacer/>-->
+	<!--			<OverflowToolbarButton icon="sap-icon://document" tooltip="新建" press="onToggleContextMenu"/>-->
+	<!--		</OverflowToolbar>-->
+	<!--	</headerToolbar>-->
+	<!--	<columns>-->
+	<!--入学日期-->
+	<!--		<Column id="TableZhr_rxrq" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="入学日期"/>-->
+	<!--		</Column>-->
+	<!--毕业日期-->
+	<!--		<Column id="BEGDA0022" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="毕业日期"/>-->
+	<!--		</Column>-->
+	<!--毕业学校-->
+	<!--		<Column id="INSTI" demandPopin="true">-->
+	<!--			<Text text="毕业学校"/>-->
+	<!--		</Column>-->
+	<!--专业名称-->
+	<!--		<Column id="FACH3" demandPopin="true">-->
+	<!--			<Text text="专业名称"/>-->
+	<!--		</Column>-->
+	<!--学历-->
+	<!--		<Column id="ACAQU" demandPopin="true">-->
+	<!--			<Text text="学历"/>-->
+	<!--		</Column>-->
+	<!--专业类型-->
+	<!--		<Column id="ZHR_ZYLX" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="专业类型"/>-->
+	<!--		</Column>-->
+	<!--学位-->
+	<!--		<Column id="SLABS" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学位"/>-->
+	<!--		</Column>-->
+	<!--学习类型-->
+	<!--		<Column id="INSMO" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学习类型"/>-->
+	<!--		</Column>-->
+	<!--学历证书编号-->
+	<!--		<Column id="ACQID" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学历证书编号"/>-->
+	<!--		</Column>-->
+	<!--学位证书编号-->
+	<!--		<Column id="ACCID" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="学位证书编号"/>-->
+	<!--		</Column>-->
+	<!--是否最高学历-->
+	<!--		<Column id="ACAQM" demandPopin="true" minScreenWidth="Tablet">-->
+	<!--			<Text text="是否最高学历"/>-->
+	<!--		</Column>-->
+	<!--	</columns>-->
+	<!--	<items>-->
+	<!--		<ColumnListItem press="onDisplayItem" id="cli3" type="Navigation">-->
+	<!--			<cells>-->
+	<!--				<Text text="{Educational>ZHR_RXRQ}"/>-->
+	<!--				<Text text="{Educational>BEGDA}"/>-->
+	<!--				<Text text="{Educational>INSTI}"/>-->
+	<!--				<Text text="{Educational>FACH3}"/>-->
+	<!--				<Text text="{Educational>ACAQU}"/>-->
+	<!--				<Text text="{Educational>ZHR_ZYLX}"/>-->
+	<!--				<Text text="{Educational>SLABS}"/>-->
+	<!--				<Text text="{Educational>INSMO}"/>-->
+	<!--				<Text text="{Educational>ACQID}"/>-->
+	<!--				<Text text="{Educational>ACCID}"/>-->
+	<!--				<Text text="{Educational>ACAQM}"/>-->
+	<!--			</cells>-->
+	<!--		</ColumnListItem>-->
+	<!--	</items>-->
+	<!--</Table>-->
+</core:FragmentDefinition>

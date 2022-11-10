@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<Dialog id="attachDialog" title="附件上传" resizable="true" draggable="true">
+		<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="/sap/opu/odata/sap/ZSY_HR_PRE_ENTRY_SRV/ZSY_TT_PRE_FILESet" tooltip="附件上传"
+			uploadComplete="onUploadComplete" change="handleValueChange" typeMissmatch="handleTypeMissmatch" uploadStart="handleBeforeUpload"
+			value="{oFile>/FileName}" sendXHR="true" style="Emphasized" placeholder="单击此处或浏览按钮上传文件">
+			<u:parameters>
+				<u:FileUploaderParameter name="param1" value="Foo"/>
+				<u:FileUploaderParameter name="param2" value="bar"/>
+			</u:parameters>
+			<u:headerParameters>
+				<u:FileUploaderParameter name="headerParam1" value="Foo"/>
+				<u:FileUploaderParameter name="headerParam2" value="bar"/>
+			</u:headerParameters>
+		</u:FileUploader>
+		<Label class="attachWidth"/>
+		<beginButton>
+			<Button id="attachButton" icon="sap-icon://accept" text="确定" type="Accept" press="onDialogImageOk"/>
+		</beginButton>
+		<endButton>
+			<Button id="ToolBarButton" icon="sap-icon://accept" text="取消" type="Accept" press="onDialogImageCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

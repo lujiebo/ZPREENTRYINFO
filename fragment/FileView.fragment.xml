@@ -1,0 +1,597 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	height="100%">
+	<VBox>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile1}" required="true" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile1" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile1>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Button id="MyFileButton1" icon="sap-icon://upload" text="{i18n>TextMyFile1}" type="Emphasized" tooltip="{i18n>TextMyFile1}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile1}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem1" id="cliFile1" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile1>FILENAME}" target="_blank" HREF="{MyFile1>HREF}" press="onShowDocument"/>
+							<!--<Link text="表单信息" target="_self" href="{oTreeTable>href}"/>-->
+							<Text text="{MyFile1>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile1>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile1>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile1>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile2}" required="true" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile2" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile2>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton2" icon="sap-icon://upload" text="{i18n>TextMyFile2}" type="Emphasized" tooltip="{i18n>TextMyFile2}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile2}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem2" id="cliFile2" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile2>FILENAME}" target="_blank" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile2>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile2>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile2>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile2>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile10}" required="false" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile10" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile10>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton10" icon="sap-icon://upload" text="{i18n>TextMyFile10}" type="Emphasized" tooltip="{i18n>TextMyFile10}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile10}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem10" id="cliFile10" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile10>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile10>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile10>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile10>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile10>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile3}" required="true" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile3" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile3>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton3" icon="sap-icon://upload" text="{i18n>TextMyFile3}" type="Emphasized" tooltip="{i18n>TextMyFile3}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile3}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem3" id="cliFile3" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile3>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile3>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile3>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile3>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile3>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile4}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile4" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile4>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton4" icon="sap-icon://upload" text="{i18n>TextMyFile4}" type="Emphasized" tooltip="{i18n>TextMyFile4}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile4}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem4" id="cliFile4" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile4>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile4>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile4>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile4>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile4>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile5}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile5" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile5>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton5" icon="sap-icon://upload" text="{i18n>TextMyFile5}" type="Emphasized" tooltip="{i18n>TextMyFile5}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile5}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem5" id="cliFile5" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile5>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile5>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile5>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile5>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile5>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile6}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile6" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile6>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton6" icon="sap-icon://upload" text="{i18n>TextMyFile6}" type="Emphasized" tooltip="{i18n>TextMyFile6}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile6}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem6" id="cliFile6" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile6>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile6>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile6>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile6>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile7}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile7" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile7>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton7" icon="sap-icon://upload" text="{i18n>TextMyFile7}" type="Emphasized" tooltip="{i18n>TextMyFile7}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile7}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem7" id="cliFile7" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile7>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile7>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile7>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile7>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile8}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile8" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile8>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton8" icon="sap-icon://upload" text="{i18n>TextMyFile8}" type="Emphasized" tooltip="{i18n>TextMyFile8}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile8}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem8" id="cliFile8" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile8>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile8>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile8>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile8>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile8>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile9}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile9" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile9>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton9" icon="sap-icon://upload" text="{i18n>TextMyFile9}" type="Emphasized" tooltip="{i18n>TextMyFile9}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile9}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem9" id="cliFile9" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile9>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile9>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile9>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile9>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile9>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<Panel expandable="true" expanded="false">
+			<headerToolbar>
+				<OverflowToolbar style="Clear">
+					<Label text="{i18n>TitleMyFile11}" design="Bold"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<Table id="MyFile11" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+				growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+				delete="onDeleteFile" items="{ path: 'MyFile11>/' }">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<!--<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">-->
+							<!--	<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>-->
+							<!--</ComboBox>-->
+							<Button id="MyFileButton11" icon="sap-icon://upload" text="{i18n>TextMyFile11}" type="Emphasized" tooltip="{i18n>TextMyFile11}"
+								press="onUploadFile"/>
+							<Label text="{i18n>LabelMyFile11}" design="Bold"/>
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件名"/>
+					</Column>
+					<Column width="8rem" demandPopin="true">
+						<Text text="文件种类"/>
+					</Column>
+					<Column width="20rem" demandPopin="true">
+						<Text text="文件类型"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传日期"/>
+					</Column>
+					<Column width="10rem" demandPopin="true">
+						<Text text="上传时间"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onDisplayItem11" id="cliFile11" type="Active">
+						<cells>
+							<!--<Text text="{MyFile>FILENAME}"/>-->
+							<Link text="{MyFile11>FILENAME}" target="_self" HREF="{MyFile2>HREF}" press="onShowDocument"/>
+							<Text text="{MyFile11>PRE_FILETYPE}"/>
+							<Text text="{ path: 'MyFile11>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+							<!--<Text text="{MyFile>MIMETYPE}"/>-->
+							<Text text="{path:'MyFile11>SYDATE', formatter:'.formatter.formatDate'}"/>
+							<Text text="{path:'MyFile11>SYTIME', formatter:'.formatter.formatTime'}"/>
+							<!--<Text text="{MyFile>SYTIME}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

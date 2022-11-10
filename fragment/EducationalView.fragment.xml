@@ -1,0 +1,127 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<t:Table id="Educational" rows="{path: 'Educational>/'}" visibleRowCount="5" ariaLabelledBy="title" selectionMode="MultiToggle"
+		enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice">
+		<t:toolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton id="newEducational" icon="sap-icon://document" tooltip="新建" press="onNewItem"/>
+				<OverflowToolbarButton id="deleteEducational" icon="sap-icon://delete" tooltip="删除" press="onDeleteItem"/>
+			</OverflowToolbar>
+		</t:toolbar>
+		<t:columns>
+			<t:Column width="10rem" filterProperty="ZHR_RXRQ" sortProperty="ZHR_RXRQ">
+				<Label text="入学日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd" class="disbalekb" placeholder="入学日期 ..." value="{Educational>ZHR_RXRQ}" change="handleChangeDate" valueHelpOnly="true"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="BEGDA" sortProperty="BEGDA">
+				<Label text="毕业日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd"  class="disbalekb" placeholder="毕业日期 ..." value="{Educational>BEGDA}" change="handleChangeDate"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="INSTI" sortProperty="INSTI">
+				<Label text="毕业学校"/>
+				<t:template>
+					<Input value="{Educational>INSTI}" maxLength="80"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="FACH3" sortProperty="FACH3">
+				<Label text="专业名称"/>
+				<t:template>
+					<Input value="{Educational>FACH3}" maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACAQU" sortProperty="ACAQU">
+				<Label text="学历"/>
+				<t:template>
+					<Input id="TAB_ACAQU" value="{Educational>ACAQU} {Educational>ACAQT}" showValueHelp="true" valueHelpRequest="ValueHelpTable"
+						placeholder="学历" valueHelpOnly="true"/>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Educational>ACAQU}" items="{oDropModel>/acaquDrop}" change="onChangeACAQU" >-->
+					<!--	<core:Item key="{oDropModel>Acaqu}" text="{oDropModel>Acaqt}"/>-->
+					<!--</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ZHR_ZYLX" sortProperty="ZHR_ZYLX">
+				<Label text="专业类型"/>
+				<t:template>
+					<Select forceSelection="false" selectedKey="{Educational>ZHR_ZYLX}" items="{oDropModel>/zhr_zylxDrop}">
+						<core:Item key="{oDropModel>ZhrDm}" text="{oDropModel>ZhrDmms}" />
+					</Select>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Educational>ZHR_ZYLX}" items="{oDropModel>/zhr_zylxDrop}">-->
+					<!--	<core:Item key="{oDropModel>ZhrDm}" text="{oDropModel>ZhrDmms}"/>-->
+					<!--</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="SLABS" sortProperty="SLABS">
+				<Label text="学位"/>
+				<t:template>
+					<Input id="TAB_SLABS" value="{Educational>SLABS} {Educational>STEXT}" showValueHelp="true" valueHelpRequest="ValueHelpTable"
+						placeholder="学位" valueHelpOnly="true"/>
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Educational>SLABS}" items="{oDropModel>/slabsDrop}">-->
+					<!--	<core:Item key="{oDropModel>Slabs}" text="{oDropModel>Stext}"/>-->
+					<!--</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="INSMO" sortProperty="INSMO">
+				<Label text="学习类型"/>
+				<t:template>
+					<Select forceSelection="false" selectedKey="{Educational>INSMO}" items="{oDropModel>/insmoDrop}">
+						<core:Item key="{oDropModel>Insmo}" text="{oDropModel>Insmt}" />
+					</Select>
+					<!--<Select forceSelection="false" selectedKey="{Educational>/INSMO}" items="{oDropModel>/insmoDrop}">-->
+					<!--	<core:Item key="{oDropModel>Insmo}" text="{oDropModel>Insmt}" />-->
+					<!--</Select>-->
+					<!--<ComboBox showSecondaryValues="true" selectedKey="{Educational>INSMO}" items="{oDropModel>/insmoDrop}">-->
+					<!--	<core:Item key="{oDropModel>Insmo}" text="{oDropModel>Insmt}"/>-->
+					<!--</ComboBox>-->
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACQID" sortProperty="ACQID">
+				<Label text="学历证书编号"/>
+				<t:template>
+					<Input value="{Educational>ACQID}" maxLength="20" change="handleChangeNumber"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACCID" sortProperty="ACCID">
+				<Label text="学位证书编号"/>
+				<t:template>
+					<Input value="{Educational>ACCID}" maxLength="20" change="handleChangeNumber"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ACAQM" sortProperty="ACAQM">
+				<Label text="是否最高学历"/>
+				<t:template>
+					<!--{Educational>ACAQM} -->
+					<CheckBox id="TAB_ACAQM" selected="{ path: 'Educational>ACAQM', formatter: '.formatACAQM' }" select="onChangeEvent"/>
+				</t:template>
+			</t:Column>
+			<!-- <t:Column width="10rem" filterProperty="ZHR_SFYJS" sortProperty="ZHR_SFYJS">
+				<Label text="是否应届生"/>
+				<t:template>
+					<CheckBox id="TAB_ZHR_SFYJS" selected="{ path: 'Educational>ZHR_SFYJS', formatter: '.formatACAQM' }" select="onChangeEvent" editable="false"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="10rem" filterProperty="ZHR_J" sortProperty="ZHR_J">
+				<Label text="届"/>
+				<t:template>
+					<Input value="{Educational>ZHR_J}" editable="false"/>
+				</t:template>
+			</t:Column> -->
+			<!--<t:Column width="10rem" filterProperty="ZHR_YXDW" sortProperty="ZHR_YXDW">-->
+			<!--	<Label text="院校档位"/>-->
+			<!--	<t:template>-->
+			<!--		<Input value="{Educational>ZHR_YXDW} {Educational>ZHR_YXDW_DESC}" editable="false"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+			<!--<t:Column width="10rem" filterProperty="ZHR_YXLX" sortProperty="ZHR_YXLX">-->
+			<!--	<Label text="院校类型"/>-->
+			<!--	<t:template>-->
+			<!--		<Input value="{Educational>ZHR_YXLX} {Educational>ZHR_YXLX_DESC}" editable="false"/>-->
+			<!--	</t:template>-->
+			<!--</t:Column>-->
+		</t:columns>
+	</t:Table>
+</core:FragmentDefinition>

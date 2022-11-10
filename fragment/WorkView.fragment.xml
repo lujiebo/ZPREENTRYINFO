@@ -1,0 +1,119 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:t="sap.ui.table"
+	height="100%">
+	<t:Table id="Work" rows="{path: 'Work>/'}" visibleRowCount="4" ariaLabelledBy="title" selectionMode="MultiToggle"
+		enableCellFilter="{ui>/cellFilterOn}" filter="filterPrice">
+		<t:toolbar>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<OverflowToolbarButton id="newWork" icon="sap-icon://document" tooltip="新建" press="onNewItem"/>
+				<OverflowToolbarButton id="deleteWork" icon="sap-icon://delete" tooltip="删除" press="onDeleteItem"/>
+			</OverflowToolbar>
+		</t:toolbar>
+		<t:columns>
+			<t:Column width="12rem" filterProperty="BEGDA" sortProperty="ICTYP">
+				<Label text="工作经历开始日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd" class="disbalekb"  placeholder="工作经历开始日期 ..." value="{Work>BEGDA}"  change="handleChangeDate"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="12rem" filterProperty="ENDDA" sortProperty="ENDDA">
+				<Label text="工作经历结束日期"/>
+				<t:template>
+					<DatePicker valueFormat="yyyyMMdd"  class="disbalekb" placeholder="工作经历结束日期 ..." value="{Work>ENDDA}" change="handleChangeDate"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="16rem" filterProperty="ZZGZDW" sortProperty="ZZGZDW">
+				<Label text="工作单位"/>
+				<t:template>
+					<Input value="{Work>ZZGZDW}"  maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="16rem" filterProperty="ZHR_W" sortProperty="ZHR_W">
+				<Label text="岗位"/>
+				<t:template>
+					<Input value="{Work>ZHR_W}"  maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="12rem" filterProperty="DEPTN" sortProperty="DEPTN">
+				<Label text="所在部门"/>
+				<t:template>
+					<Input value="{Work>DEPTN}"  maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="12rem" filterProperty="ZHR_DRZW" sortProperty="ZHR_DRZW">
+				<Label text="担任职务"/>
+				<t:template>
+					<Input value="{Work>ZHR_DRZW}"  maxLength="40"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="12rem" filterProperty="REFER" sortProperty="REFER">
+				<Label text="证明人"/>
+				<t:template>
+					<Input value="{Work>REFER}"  maxLength="16"/>
+				</t:template>
+			</t:Column>
+			<t:Column width="12rem" filterProperty="REFCO" sortProperty="REFCO">
+				<Label text="证明人电话"/>
+				<t:template>
+					<Input value="{Work>REFCO}"  maxLength="20"/>
+				</t:template>
+			</t:Column>
+		</t:columns>
+	</t:Table>
+	<!--<Table id="Work" mode="MultiSelect" inset="false" items="{ path: '/ProductCollection', sorter: { path: 'BEGDA' } }">-->
+	<!--	<headerToolbar>-->
+	<!--		<OverflowToolbar>-->
+	<!--			<ToolbarSpacer/>-->
+	<!--			<OverflowToolbarButton icon="sap-icon://document" tooltip="新建" press="onToggleContextMenu"/>-->
+	<!--		</OverflowToolbar>-->
+	<!--	</headerToolbar>-->
+	<!--	<columns>-->
+	<!--工作经历开始日期-->
+	<!--		<Column id="BEGDA" demandPopin="true">-->
+	<!--			<Text text="工作经历开始日期"/>-->
+	<!--		</Column>-->
+	<!--工作经历结束日期-->
+	<!--		<Column id="ENDDA" demandPopin="true">-->
+	<!--			<Text text="工作经历结束日期"/>-->
+	<!--		</Column>-->
+	<!--工作单位-->
+	<!--		<Column id="ZZGZDW" demandPopin="true">-->
+	<!--			<Text text="工作单位"/>-->
+	<!--		</Column>-->
+	<!--岗位-->
+	<!--		<Column id="PLANS" demandPopin="true">-->
+	<!--			<Text text="岗位"/>-->
+	<!--		</Column>-->
+	<!--所在部门-->
+	<!--		<Column id="DEPTN" demandPopin="true">-->
+	<!--			<Text text="所在部门"/>-->
+	<!--		</Column>-->
+	<!--担任职务-->
+	<!--		<Column id="ZHR_DRZW" demandPopin="true">-->
+	<!--			<Text text="担任职务"/>-->
+	<!--		</Column>-->
+	<!--证明人-->
+	<!--		<Column id="REFER" demandPopin="true">-->
+	<!--			<Text text="证明人"/>-->
+	<!--		</Column>-->
+	<!--证明人电话-->
+	<!--		<Column id="REFCO" demandPopin="true">-->
+	<!--			<Text text="证明人电话"/>-->
+	<!--		</Column>-->
+	<!--	</columns>-->
+	<!--	<items>-->
+	<!--		<ColumnListItem vAlign="Middle" type="Navigation" press="onDisplayItem4" id="cli4">-->
+	<!--			<cells>-->
+	<!--				<Text text="{Work>BEGDA}"/>-->
+	<!--				<Text text="{Work>ENDDA}"/>-->
+	<!--				<Text text="{Work>ZZGZDW}"/>-->
+	<!--				<Text text="{Work>PLANS}"/>-->
+	<!--				<Text text="{Work>DEPTN}"/>-->
+	<!--				<Text text="{Work>ZHR_DRZW}"/>-->
+	<!--				<Text text="{Work>REFER}"/>-->
+	<!--				<Text text="{Work>REFCO}"/>-->
+	<!--			</cells>-->
+	<!--		</ColumnListItem>-->
+	<!--	</items>-->
+	<!--</Table>-->
+</core:FragmentDefinition>

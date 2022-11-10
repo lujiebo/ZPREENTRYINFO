@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>人员信息填写</title>
+		<!--src="../../resources/sap-ui-core.js"-->
+		
+			<!--src="https://ui5.sap.com/1.78.11/resources/sap-ui-core.js"-->
+			<!--src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"-->
+			<!--/sap/bc/ui5_ui5/ui2/ushell/resources/sap-ui-core.js-->
+		<script id="sap-ui-bootstrap"
+			src="/sap/bc/ui5_ui5/ui2/ushell/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-resourceroots='{"ZPreEntryPeopleInfo": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" HREF="css/style.css">
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "ZPreEntryPeopleInfo"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	</body>
+
+</html>

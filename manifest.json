@@ -1,0 +1,142 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "ZPreEntryPeopleInfo",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0"
+        },
+        "dataSources": {
+            "ZSY_HR_PRE_ENTRY_SRV": {
+                "uri": "/sap/opu/odata/sap/ZSY_HR_PRE_ENTRY_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZSY_HR_PRE_ENTRY_SRV/metadata.xml",
+                    "annotations": []
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "ZPreEntryPeopleInfo.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.58.7",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.collaboration": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ZPreEntryPeopleInfo.i18n.i18n"
+                }
+            },
+            "PreaEntry": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZSY_HR_PRE_ENTRY_SRV",
+                "preload": true
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ZPreEntryPeopleInfo.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide",
+                "bypassed": {
+                    "target": "notFound"
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "homePage",
+                    "target": "homePage"
+                },
+                {
+                    "pattern": "BsHomePage",
+                    "name": "BsHomePage",
+                    "target": "BsHomePage"
+                }
+            ],
+            "targets": {
+                "homePage": {
+                    "viewId": "homePage",
+                    "viewName": "HomePage",
+                    "viewLevel": 1
+                },
+                "BsHomePage": {
+                    "viewId": "BsHomePage",
+                    "viewName": "BsHomePage",
+                    "viewLevel": 1
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound",
+                    "transition": "show"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zpreentryinfo",
+        "_version": "1.1.0"
+    }
+}

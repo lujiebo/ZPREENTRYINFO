@@ -1,0 +1,24 @@
+/* Enter your custom styles here */
+
+/*li[id*='UploadCollection-list-nodata'] span {*/
+/*    display: none;*/
+/*}*/
+/*Hide no data description*/
+/*li[id*='__component0---homePage--UploadCollection-1-uploader'] div[id*='__component0---homePage--UploadCollection-1-uploader'] {*/
+/*    display: none;*/
+/*}*/
+/*hide number of attachment label*/
+/*div[id*='__component0---homePage--UploadCollection-1-uploader'] {*/
+/*    display: none;*/
+/*}*/
+/*Change no data text from 'No files found' to 'No data' - // you can avoid below two css class if ok to go with 'No files found' (existing text)*/
+/*div[id*='__component0---homePage--UploadCollection-1-uploader'] {*/
+/*   visibility: hidden;*/
+/*   position: relative;*/
+/*}*/
+/*div[id*='__component0---homePage--UploadCollection-1-uploadert']:after {*/
+/*   visibility: visible;*/
+/*   position: absolute;*/
+/*   content: "No data";*/
+/*}*/
+.disbalekb .sapMInputBaseInner {    pointer-events: none;    color: transparent;    text-shadow: 0 0 0 gray;    background: #fff;}

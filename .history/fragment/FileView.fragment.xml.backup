@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	height="100%">
+	<Table id="MyFile" width="auto" noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+		growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange="selectionChange" mode="Delete"
+		delete="onDeleteFile" items="{ path: 'MyFile>/' }">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ComboBox id="UploadButton" selectedKey="{FileModel>key}" items="{oDropModel>/fileDrop}">
+						<core:Item key="{oDropModel>FileType}" text="{oDropModel>FileDesc}"/>
+					</ComboBox>
+					<Button icon="sap-icon://upload" text="上传文件" type="Emphasized" tooltip="上传文件" press="onUploadFile"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column id="FILENAME" width="20rem" demandPopin="true">
+				<Text text="文件名"/>
+			</Column>
+			<Column id="PRE_FILETYPE" width="8rem" demandPopin="true">
+				<Text text="文件种类"/>
+			</Column>			
+			<Column id="MIMETYPE" width="20rem" demandPopin="true">
+				<Text text="文件类型"/>
+			</Column>
+			<Column id="SYDATE" width="10rem" demandPopin="true">
+				<Text text="上传日期"/>
+			</Column>
+			<Column id="SYTIME" width="10rem" demandPopin="true">
+				<Text text="上传时间"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem press="onDisplayItem2" id="cliFile" type="Active">
+				<cells>
+					<!--<Text text="{MyFile>FILENAME}"/>-->
+					<Link text="{MyFile>FILENAME}" target="_self" HREF="{MyFile>HREF}"/>
+					<Text text="{MyFile>PRE_FILETYPE}"/>
+					<Text text="{ path: 'MyFile>PRE_FILETYPE', formatter: '.formatPRE_FILETYPE' }"/>
+					<!--<Text text="{MyFile>MIMETYPE}"/>-->
+					<Text text="{path:'MyFile>SYDATE', formatter:'.formatter.formatDate'}"/>
+					<Text text="{path:'MyFile>SYTIME', formatter:'.formatter.formatTime'}"/>
+					<!--<Text text="{MyFile>SYTIME}"/>-->
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

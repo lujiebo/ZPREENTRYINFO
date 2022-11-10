@@ -1,0 +1,201 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:layout="sap.ui.layout" xmlns:m="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" controllerName="ZPreEntryPeopleInfo.controller.HomePage" height="100%">
+	<layout:VerticalLayout class="sapUiContentPadding" width="100%">
+		<layout:dependents>
+			<core:Fragment id="InitCheckDialog" fragmentName="ZPreEntryPeopleInfo.fragment.InitCheck" type="XML"/>
+		</layout:dependents>
+	</layout:VerticalLayout>
+	<layout:VerticalLayout class="sapUiContentPadding" width="100%">
+		<layout:dependents>
+			<core:Fragment fragmentName="ZPreEntryPeopleInfo.view.BusyDialog" type="XML"/>
+		</layout:dependents>
+	</layout:VerticalLayout>
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true">
+		<headerTitle>
+			<!--id="headerForTest" objectImageURI="{PersonInfo>/PhotoUrl}" isObjectIconAlwaysVisible="true"-->
+			<!--			isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" objectTitle="{oTitleModel>/infoTitle}" objectImageShape="Square"-->
+			<!--			showTitleSelector="true" objectSubtitle="点击下拉按钮导入人员照片" titleSelectorPress="handleTitlePress" showPlaceholder="true">-->
+			<ObjectPageHeader id="headerForTest" objectImageURI="{PersonInfo>/PhotoUrl}" isObjectIconAlwaysVisible="false"
+				isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" objectTitle="{oTitleModel>/infoTitle}" objectImageShape="Square"
+				titleSelectorPress="onUploadFile" showPlaceholder="true">
+				<actions>
+					<m:OverflowToolbarButton id="jokerOTB" icon="sap-icon://value-help" text="重新读取人员信息" type="Emphasized" tooltip="重新读取人员信息" press="onReread"
+						visible="false"/>
+					<m:OverflowToolbarButton icon="sap-icon://save" text="保存" type="Emphasized" tooltip="保存" press="onSave"/>
+					<m:OverflowToolbarButton icon="sap-icon://complete" text="提交" type="Emphasized" tooltip="提交" press="onSumbit"/>
+					<!--<m:OverflowToolbarButton icon="sap-icon://complete" text="提交" type="Emphasized" tooltip="提交" press="onCard"/>-->
+				</actions>
+			</ObjectPageHeader>
+		</headerTitle>
+		<headerContent>
+			<layout:VerticalLayout>
+				<!--<m:Label id="PlstxName1" text="{PersonInfo>/Plstx}-{PersonInfo>/Orgtx}"/>-->
+				<!--<m:ObjectStatus title="手机" text="{PersonInfo>/Phone}"/>-->
+				<!--<m:ObjectStatus title="邮箱" text="{PersonInfo>/Email}"/>-->
+			</layout:VerticalLayout>
+		</headerContent>
+		<sections>
+			<ObjectPageSection id="ops1" title="个人信息">
+				<subSections>
+					<ObjectPageSubSection id="opss1" title="个人信息">
+						<blocks>
+							<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+								adjustLabelSpan="false" emptySpanXL="2" emptySpanL="1" emptySpanM="1" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+								singleContainerFullSize="false">
+								<f:content>
+									<core:Title text=""/>
+									<m:Label id="GachnLabel" text="员工姓名"/>
+									<m:Input id="NACHN" value="{PersonInfo>/NACHN}" class="bc_while" editable="false"></m:Input>
+									<m:Label id="Name2Label" text="曾用姓名"/>
+									<m:Input id="NAME2" value="{PersonInfo>/NAME2}" editable="false"></m:Input>
+									<m:Label id="BgdatLabel" text="出生日期"/>
+									<m:Input id="GBDAT" value="{PersonInfo>/GBDAT}" editable="false"></m:Input>
+									<m:Label id="GeschLabel" text="性别"/>
+									<m:Input id="GESCH" value="{ path: 'PersonInfo>/GESCH', formatter: '.formatGESCH' }" editable="false"></m:Input>
+									<m:Label id="Zhr_mzLabel" text="民族"/>
+									<m:Select id="ZHR_MZ"  forceSelection="false" selectedKey="{PersonInfo>/ZHR_MZ}" items="{oDropModel>/zHr_mzDrop}">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:Select>
+									<!--<m:Input id="ZHR_MZ" value="{PersonInfo>/ZHR_MZ_DESC}" editable="true"></m:Input>-->
+									<!--<m:ComboBox id="ZHR_MZ" selectedKey="{PersonInfo>/ZHR_MZ}" items="{oDropModel>/zHr_mzDrop}" showValueHelp="true" valueHelpOnly="true">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:ComboBox>-->
+									<m:Label id="FamstLabel" text="婚姻状况"/>
+									<m:Select id="FAMST"  forceSelection="false" selectedKey="{PersonInfo>/FAMST}" items="{oDropModel>/famstDrop}">
+										<core:Item key="{oDropModel>Famst}" text="{oDropModel>Ftext}" additionalText="{oDropModel>Famst}"/>
+									</m:Select>
+									<!--<m:Input id="FAMST" value="{PersonInfo>/FATXT}" editable="true"></m:Input>-->
+									<!--<m:ComboBox id="FAMST" selectedKey="{PersonInfo>/FAMST}" items="{oDropModel>/famstDrop}">
+										<core:Item key="{oDropModel>Famst}" text="{oDropModel>Ftext}" additionalText="{oDropModel>Famst}"/>
+									</m:ComboBox>-->
+									<m:Label id="HukotLabel" text="户口性质"/>
+									<m:Select id="HUKOT"  forceSelection="false" selectedKey="{PersonInfo>/HUKOT}" items="{oDropModel>/hukotDrop}">
+										<core:Item key="{oDropModel>DomvalueL}" text="{oDropModel>Ddtext}" additionalText="{oDropModel>DomvalueL}"/>
+									</m:Select>
+									<!--<m:Input id="HUKOT" value="{ path: 'PersonInfo>/HUKOT', formatter: '.formatHUKOT' } " editable="true"></m:Input>-->
+									<!--<m:ComboBox id="HUKOT" selectedKey="{PersonInfo>/HUKOT}" items="{oDropModel>/hukotDrop}">
+										<core:Item key="{oDropModel>DomvalueL}" text="{oDropModel>Ddtext}" additionalText="{oDropModel>DomvalueL}"/>
+									</m:ComboBox>-->
+									<core:Title text=""/>
+									<m:Label id="GblndLabel" text="国家/地区"/>
+									<m:Select id="GBLND"  forceSelection="false" selectedKey="{PersonInfo>/GBLND}" items="{oDropModel>/land1Drop}"  change="onChangeGblnd">
+										<core:Item key="{oDropModel>Land1}" text="{oDropModel>Landx}" additionalText="{oDropModel>Land1}"/>
+									</m:Select>
+									<!--<m:ComboBox id="GBLND" selectedKey="{PersonInfo>/GBLND}" items="{oDropModel>/land1Drop}" change="onChangeGblnd">
+										<core:Item key="{oDropModel>Land1}" text="{oDropModel>Landx}" additionalText="{oDropModel>Land1}"/>
+									</m:ComboBox>-->
+									<m:Label id="ZzstateLabel" text="籍贯省"/>
+									<m:Select id="ZZSTATE"  forceSelection="false" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:Select>
+									<!--<m:Input id="ZZSTATE_DESC" value="{PersonInfo>/ZZSTATE_DESC}" editable="true"></m:Input>-->
+									<!--<m:ComboBox id="ZZSTATE" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:ComboBox>-->
+									<m:Label id="ZzcityLabel" text="籍贯市"/>
+									<m:Select id="ZZCITY"  forceSelection="false" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:Select>
+									<!--<m:Input id="ZZCITY_DESC" value="{PersonInfo>/ZZCITY_DESC}" editable="true"></m:Input>-->
+									<!--<m:ComboBox id="ZZCITY" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:ComboBox>-->
+									<m:Label id="Zzort01Label" text="籍贯县"/>
+									<m:Select id="ZZORT01"  forceSelection="false" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:Select>
+									<!--<m:Input id="ZZORT01_DESC" value="{PersonInfo>/ZZORT01_DESC}" editable="true"></m:Input>-->
+									<!--<m:ComboBox id="ZZORT01" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
+									</m:ComboBox>-->
+									<!--<m:Input id="GBLND" value="{PersonInfo>/GBLND}" editable="true"></m:Input>-->
+									<m:Label id="Zhr_jjlxrxmLabel" text="紧急联系人姓名"/>
+									<m:Input id="ZHR_JJLXRXM" value="{PersonInfo>/ZHR_JJLXRXM}" editable="true"></m:Input>
+									<!--{PersonInfo>/HUKOT}-->
+									<m:Label id="Zhr_jjlxrdhLabel" text="紧急联系人电话"/>
+									<m:Input id="ZHR_JJLXRDH" value="{PersonInfo>/ZHR_JJLXRDH}" editable="true"></m:Input>
+								    <m:Label id="PoliticalLabel" text="政治面貌"/>
+									<m:Select id="POLITICAL"  forceSelection="false" selectedKey="{PersonInfo>/Pcode}" items="{oDropModel>/politicalDrop}">
+										<core:Item key="{oDropModel>PCODE}" text="{oDropModel>PTEXT}" additionalText="{oDropModel>PTEXT}"/>
+									</m:Select>
+								</f:content>
+							</f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops2" title="证件信息">
+				<subSections>
+					<ObjectPageSubSection id="opss2" title="证件信息">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/IdCardView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops3" title="教育信息">
+				<subSections>
+					<ObjectPageSubSection id="opss3" title="教育信息">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/EducationalView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops9" title="外语熟练程度">
+				<subSections>
+					<ObjectPageSubSection id="opss9" title="外语熟练程度">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/LanguageView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops4" title="工作经历">
+				<subSections>
+					<ObjectPageSubSection id="opss4" title="工作经历">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/WorkView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops5" title="家庭成员">
+				<subSections>
+					<ObjectPageSubSection id="opss5" title="家庭成员">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/FamilyView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops6" title="地址信息">
+				<subSections>
+					<ObjectPageSubSection id="opss6" title="地址信息">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/AddressView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops7" title="通讯信息">
+				<subSections>
+					<ObjectPageSubSection id="opss7" title="通讯信息">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/CommunicationView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection id="ops8" title="附件上传">
+				<subSections>
+					<ObjectPageSubSection id="opss8" title="附件上传">
+						<blocks>
+							<core:Fragment fragmentName="ZPreEntryPeopleInfo/fragment/FileView" type="XML"></core:Fragment>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

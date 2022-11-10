@@ -1,0 +1,157 @@
+{
+    "resources": [
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BsHomePage.controller.js"
+        },
+        {
+            "name": "controller/designMode.js"
+        },
+        {
+            "name": "controller/messages.js"
+        },
+        {
+            "name": "controller/RepPeopleDetail.controller.js"
+        },
+        {
+            "name": "controller/HomePage.controller.js"
+        },
+        {
+            "name": "controller/searchHelp.js"
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "README.md"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "img/PersonImage.png"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "fragment/BsInitCheck.fragment.xml"
+        },
+        {
+            "name": "fragment/AddressView.fragment.xml"
+        },
+        {
+            "name": "fragment/WorkView.fragment.xml"
+        },
+        {
+            "name": "fragment/FileUpload.fragment.xml"
+        },
+        {
+            "name": "fragment/IdCardView.fragment.xml"
+        },
+        {
+            "name": "fragment/InitCheck.fragment.xml"
+        },
+        {
+            "name": "fragment/EducationalView.fragment.xml"
+        },
+        {
+            "name": "fragment/FamilyView.fragment.xml"
+        },
+        {
+            "name": "fragment/LanguageView.fragment.xml"
+        },
+        {
+            "name": "fragment/searchHelp.fragment.xml"
+        },
+        {
+            "name": "fragment/FileView.fragment.xml"
+        },
+        {
+            "name": "fragment/Card.fragment.xml"
+        },
+        {
+            "name": "fragment/CommunicationView.fragment.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "localService/ZSY_HR_PRE_ENTRY_SRV/metadata.xml"
+        },
+        {
+            "name": "view/RepPeopleDetail.view.xml"
+        },
+        {
+            "name": "view/BsHomePage.view.xml"
+        },
+        {
+            "name": "view/BusyDialog.fragment.xml"
+        },
+        {
+            "name": "view/HomePage.view.xml"
+        },
+        {
+            "name": "view/searchHelp.fragment.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": ".history/fragment/ShowImageView.fragment.xml"
+        },
+        {
+            "name": ".history/fragment/EducationalView.fragment_20201202090537.xml"
+        },
+        {
+            "name": ".history/fragment/EducationalView.fragment_20201201163428.xml"
+        },
+        {
+            "name": ".history/fragment/FileView.fragment.xml.backup"
+        },
+        {
+            "name": ".history/fragment/EducationalView.fragment_20201202093939.xml"
+        },
+        {
+            "name": ".history/fragment/ShowPdfView.fragment.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": ".vscode/settings.json"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}
