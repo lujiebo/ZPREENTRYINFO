@@ -10,13 +10,13 @@ sap.ui.define([
 	'sap/m/MessageToast',
 	"sap/ui/core/routing/History",
 	'sap/ui/core/util/File'
-], function (BaseController, Controller, JSONModel, searchHelp, models, formatter, Filter, MessageBox, MessageToast, History, File) {
+], function(BaseController, Controller, JSONModel, searchHelp, models, formatter, Filter, MessageBox, MessageToast, History, File) {
 	"use strict";
 
 	return BaseController.extend("ZPreEntryPeopleInfo.controller.HomePage", {
 		formatter: formatter,
 
-		onInit: function () {
+		onInit: function() {
 
 			//alert(navigator.userAgent);
 			// this.oPdfDialog = sap.ui.xmlfragment("ContractDialog", "ZPreEntryPeopleInfo.fragment.ShowPdfView", this);
@@ -48,24 +48,24 @@ sap.ui.define([
 			}
 
 		},
-		onCard: function (oEvent) {
+		onCard: function(oEvent) {
 			if (!this.oCardDialog) {
 				this.oCardDialog = sap.ui.xmlfragment("Card", "ZPreEntryPeopleInfo.fragment.Card", this);
 				this.getView().addDependent(this.oCardDialog);
 			}
 			this.oCardDialog.open();
 		},
-		onCancel: function () {
+		onCancel: function() {
 			this.oCardDialog.close();
 		},
-		onReread: function (oEvent) {
+		onReread: function(oEvent) {
 			if (!this.oInitCheckDialog) {
 				this.oInitCheckDialog = sap.ui.xmlfragment("InitCheckDialog", "ZPreEntryPeopleInfo.fragment.InitCheck", this);
 				this.getView().addDependent(this.oInitCheckDialog);
 			}
 			this.oInitCheckDialog.open();
 		},
-		onDialogConfirm: function (oEvent) {
+		onDialogConfirm: function(oEvent) {
 			var that = this;
 
 			// BusyDialog
@@ -103,7 +103,7 @@ sap.ui.define([
 				"X-Requested-With": "X"
 			});
 			this.oDataModelPreEntry.create(sPath, oReturnTable, { //
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 					that.oBusyDialog.close();
 					if (oData.Type == 'E') {
 						that.ShowMessage(oData.Message);
@@ -137,6 +137,7 @@ sap.ui.define([
 						that.FileType09Max = oData.FILETYPE09MAX;
 						that.FileType10Max = oData.FILETYPE10MAX;
 						that.FileType11Max = oData.FILETYPE11MAX;
+						
 						that.getView().setModel(new JSONModel(oPersonInfo), "PersonInfo");
 						that.getView().setModel(new JSONModel(window.oData.navTo0185.results), "MyIdCard");
 						that.getView().setModel(new JSONModel(window.oData.navTo0022.results), "Educational");
@@ -243,7 +244,7 @@ sap.ui.define([
 						that.changeEditable0185();
 					}
 				},
-				error: function (oError) {
+				error: function(oError) {
 					that.oBusyDialog.close();
 					that.oInitCheckDialog.close();
 					that.ShowMessage(that._ResourceBundle.getText("ShowMessage"));
@@ -251,10 +252,10 @@ sap.ui.define([
 			});
 
 		},
-		onDialogCancel: function (oEvent) {
+		onDialogCancel: function(oEvent) {
 			this.oInitCheckDialog.close();
 		},
-		getReturnTable: function (ModelName) {
+		getReturnTable: function(ModelName) {
 			switch (ModelName) {
 				case 'MyIdCard':
 					var oIdCard_WF = {
@@ -346,7 +347,7 @@ sap.ui.define([
 					return oLanguage_WF;
 			}
 		},
-		onNewItem: function (oEvent) {
+		onNewItem: function(oEvent) {
 			var oId = this.getfcode(oEvent),
 				oTable = [],
 				oTableRow,
@@ -399,7 +400,7 @@ sap.ui.define([
 			}
 		},
 
-		onDeleteItem: function (oEvent) {
+		onDeleteItem: function(oEvent) {
 			var oId = this.getfcode(oEvent),
 				oTable,
 				oTableData = [],
@@ -464,7 +465,7 @@ sap.ui.define([
 			// 	this.ShowMessage(this._ResourceBundle.getText("oErrorWhenDelete"));
 			// }
 		},
-		deleteItem: function (oId, oModelName, oTableRow, oTableData) {
+		deleteItem: function(oId, oModelName, oTableRow, oTableData) {
 			switch (oId) {
 				case 'deleteIdCard':
 					var ICTYP = oTableRow.ICTYP,
@@ -532,7 +533,7 @@ sap.ui.define([
 			}
 			this.getView().setModel(new JSONModel(oTableData), oModelName);
 		},
-		ShowMessage: function (oMessage) {
+		ShowMessage: function(oMessage) {
 			if (oMessage != "") {
 				MessageBox.error(oMessage, {
 					styleClass: "sapUiSizeCompact"
@@ -548,7 +549,7 @@ sap.ui.define([
 		//	onBeforeRendering: function() {
 		//
 		//	},
-		onUploadFile: function (oEvent) {
+		onUploadFile: function(oEvent) {
 
 			this.isIcon = "";
 			this.oInitFileType(oEvent);
@@ -576,7 +577,7 @@ sap.ui.define([
 			this.getView().setModel(new JSONModel(oFile), "oFile");
 			this.UploadDialog.open();
 		},
-		oInitFileType: function (oEvent) {
+		oInitFileType: function(oEvent) {
 			var fcode = this.getfcode(oEvent);
 			switch (fcode) {
 				case "MyFileButton1":
@@ -626,7 +627,7 @@ sap.ui.define([
 					break;
 			}
 		},
-		oGetFileModelName: function (FileType) {
+		oGetFileModelName: function(FileType) {
 			switch (FileType) {
 				case "01":
 					return "MyFile1";
@@ -652,25 +653,25 @@ sap.ui.define([
 					return "MyFile11";
 			}
 		},
-		onDialogImageCancel: function () {
+		onDialogImageCancel: function() {
 			//update by 1194668  20210610  修复照片上传之后取消再上传同样照片无法成功的bug
 			this.byId("fileUploader").clear();
 			this.UploadDialog.close();
 		},
 
 		// 对图片进行压缩  
-		compress: function (fileObj, encoderOptions, callback) {
-			if (typeof (FileReader) === 'undefined') {
+		compress: function(fileObj, encoderOptions, callback) {
+			if (typeof(FileReader) === 'undefined') {
 				console.log("当前浏览器内核不支持base64图标压缩");
 				//调用上传方式不压缩    
 				this.directTurnIntoBase64(fileObj, callback);
 			} else {
 				var reader = new FileReader();
-				reader.onload = function (e) { //要先确保图片完整获取到，这是个异步事件   
+				reader.onload = function(e) { //要先确保图片完整获取到，这是个异步事件   
 
 					var image = new Image();
 					image.src = e.target.result;
-					image.onload = function () {
+					image.onload = function() {
 						var square = 1, //定义画布的大小，也就是图片压缩之后的像素  
 							canvas = document.createElement('canvas'), //创建canvas元素  
 							context = canvas.getContext('2d'),
@@ -691,10 +692,10 @@ sap.ui.define([
 
 			}
 		},
-		directTurnIntoBase64: function (fileObj, callback) {
+		directTurnIntoBase64: function(fileObj, callback) {
 			var r = new FileReader();
 			// 转成base64  
-			r.onload = function () {
+			r.onload = function() {
 				//变成字符串  
 				var imgBase64 = r.result;
 				//console.log(imgBase64);  
@@ -702,12 +703,12 @@ sap.ui.define([
 			};
 			r.readAsDataURL(fileObj); //转成Base64格式  
 		},
-		base64ToFile: function (base64) {
+		base64ToFile: function(base64) {
 			var file = new File(base64, 'anyname.jpg');
 			console.log('File Object', file);
 			return file;
 		},
-		saveBase64: function (base64) {
+		saveBase64: function(base64) {
 			var oReturnTable = this.onInitData();
 			var oReturnTableRow;
 			var oReturnTableP = [];
@@ -739,7 +740,7 @@ sap.ui.define([
 			this.oBusyDialog.open();
 
 			this.oDataModelPreEntry.create(sPath, oReturnTable, { //
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 					that.oBusyDialog.close();
 					that.defaultFileUpload();
 					that.UploadDialog.close();
@@ -783,7 +784,7 @@ sap.ui.define([
 					oFileTableData.push(oFileTableRow);
 					that.getView().setModel(new JSONModel(oFileTableData), that.oUploadFileModel);
 				},
-				error: function (oError) {
+				error: function(oError) {
 					// that.oBusyDialog.close();
 					// that.oInitCheckDialog.close();
 				}
@@ -791,7 +792,7 @@ sap.ui.define([
 
 		},
 
-		onDialogImageOk: function (oEvent) {
+		onDialogImageOk: function(oEvent) {
 			// upload file
 			var oFileUploader = this.byId("fileUploader");
 
@@ -835,7 +836,7 @@ sap.ui.define([
 							if (file.size / (1024 * 1024) > 10) {
 								encoderOptions = '0.1';
 							}
-							this.compress(file, encoderOptions, function (imgBase64) {
+							this.compress(file, encoderOptions, function(imgBase64) {
 								//存储转换后的base64编码 
 								that.saveBase64(imgBase64);
 							});
@@ -858,7 +859,7 @@ sap.ui.define([
 					this._bUploading = true;
 
 					var that = this;
-					var _handleSuccess = function (event, xhr, settings, data) {
+					var _handleSuccess = function(event, xhr, settings, data) {
 						that.defaultFileUpload();
 						that.UploadDialog.close();
 						that.oBusyDialog.close();
@@ -949,7 +950,7 @@ sap.ui.define([
 						}
 
 					};
-					var _handleError = function (data) {
+					var _handleError = function(data) {
 						that.oBusyDialog.close();
 						var errorMsg = '';
 						that.defaultFileUpload();
@@ -991,7 +992,7 @@ sap.ui.define([
 				jQuery.sap.log.error("导入失败:\n" + oException.message);
 			}
 		},
-		setFileArr: function (oEvent) {
+		setFileArr: function(oEvent) {
 			var oFileTableModel = this.getView().getModel(this.oUploadFileModel);
 
 			var oFileTableRow = {
@@ -1068,14 +1069,14 @@ sap.ui.define([
 			// oFileTableData.push(oFileTableRow);
 			this.getView().setModel(new JSONModel(oFileTableData), this.oUploadFileModel);
 		},
-		defaultFileUpload: function () {
+		defaultFileUpload: function() {
 			var oFile = {
 				FileName: ""
 			};
 			this.getView().setModel(new JSONModel(oFile), "oFile");
 			delete this.oFile;
 		},
-		checkFileTypeBeforeUpload: function (oFileType) {
+		checkFileTypeBeforeUpload: function(oFileType) {
 			var oFileType = oFileType.toUpperCase();
 			// check file type before upload
 			switch (this.oUploadFileType) {
@@ -1086,81 +1087,81 @@ sap.ui.define([
 					} else {
 						return true;
 					}
-					case "02":
-						if (oFileType != "JPG" && oFileType != "PDF") {
-							this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError02"));
-							return false;
-						} else {
-							return true;
-						}
-						case "03":
-							if (oFileType != "JPG" && oFileType != "PDF") {
-								this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError03"));
-								return false;
-							} else {
-								return true;
-							}
-							case "04":
-								if (oFileType != "JPG" && oFileType != "PDF") {
-									this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError04"));
-									return false;
-								} else {
-									return true;
-								}
-								case "05":
-									if (oFileType != "JPG" && oFileType != "PDF") {
-										this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError05"));
-										return false;
-									} else {
-										return true;
-									}
-									case "06":
-										if (oFileType != "JPG" && oFileType != "PDF") {
-											this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError06"));
-											return false;
-										} else {
-											return true;
-										}
-										case "07":
-											if (oFileType != "JPG" && oFileType != "PDF") {
-												this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError07"));
-												return false;
-											} else {
-												return true;
-											}
-											case "08":
-												if (oFileType != "JPG" && oFileType != "PDF") {
-													this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError08"));
-													return false;
-												} else {
-													return true;
-												}
-												case "09":
-													if (oFileType != "JPG" && oFileType != "PDF") {
-														this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError09"));
-														return false;
-													} else {
-														return true;
-													}
-													case "10":
-														if (oFileType != "JPG" && oFileType != "PDF") {
-															this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError10"));
-															return false;
-														} else {
-															return true;
-														}
-														case "11":
-															if (oFileType != "JPG" && oFileType != "PDF") {
-																this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError11"));
-																return false;
-															} else {
-																return true;
-															}
+				case "02":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError02"));
+						return false;
+					} else {
+						return true;
+					}
+				case "03":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError03"));
+						return false;
+					} else {
+						return true;
+					}
+				case "04":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError04"));
+						return false;
+					} else {
+						return true;
+					}
+				case "05":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError05"));
+						return false;
+					} else {
+						return true;
+					}
+				case "06":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError06"));
+						return false;
+					} else {
+						return true;
+					}
+				case "07":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError07"));
+						return false;
+					} else {
+						return true;
+					}
+				case "08":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError08"));
+						return false;
+					} else {
+						return true;
+					}
+				case "09":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError09"));
+						return false;
+					} else {
+						return true;
+					}
+				case "10":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError10"));
+						return false;
+					} else {
+						return true;
+					}
+				case "11":
+					if (oFileType != "JPG" && oFileType != "PDF") {
+						this.ShowMessage(this._ResourceBundle.getText("oCheckFileTypeError11"));
+						return false;
+					} else {
+						return true;
+					}
 
 			}
 		},
 
-		changeFileName: function () {
+		changeFileName: function() {
 			var NewFileName,
 				UploadTypeDesc,
 				oDate = new Date(),
@@ -1217,7 +1218,7 @@ sap.ui.define([
 			counter++;
 			return NewFileName;
 		},
-		onDeleteFile: function (oEvent) {
+		onDeleteFile: function(oEvent) {
 			// var oListItem = oEvent.getParameters().listItem;
 			var fcode = this.getfcode(oEvent);
 			var oModelName = fcode;
@@ -1249,7 +1250,7 @@ sap.ui.define([
 			}
 
 		},
-		getFileType: function (fileName) {
+		getFileType: function(fileName) {
 			var startIndex = fileName.lastIndexOf(".");
 			if (startIndex != -1) {
 				return fileName.substring(startIndex + 1, fileName.length).toLowerCase();
@@ -1257,12 +1258,12 @@ sap.ui.define([
 				return "";
 			}
 		},
-		onUploadComplete: function (oEvent) {
+		onUploadComplete: function(oEvent) {
 
 		},
-		handleTypeMissmatch: function (oEvent) {
+		handleTypeMissmatch: function(oEvent) {
 			var aFileTypes = oEvent.getSource().getFileType();
-			jQuery.each(aFileTypes, function (key, value) {
+			jQuery.each(aFileTypes, function(key, value) {
 				aFileTypes[key] = "*." + value;
 			});
 			var sSupportedFileTypes = aFileTypes.join(", ");
@@ -1271,10 +1272,10 @@ sap.ui.define([
 				sSupportedFileTypes);
 		},
 
-		handleBeforeUpload: function () {
+		handleBeforeUpload: function() {
 
 		},
-		handleValueChange: function (oEvent) {
+		handleValueChange: function(oEvent) {
 			var oFileUploader = oEvent.getSource();
 			oFileUploader.removeAllHeaderParameters();
 			//x-csrf-token:
@@ -1286,7 +1287,7 @@ sap.ui.define([
 			MessageToast.show("点击确定按钮上传文件'" + oEvent.getParameter("newValue") + "'");
 
 		},
-		_get_csrf: function (entrySet) {
+		_get_csrf: function(entrySet) {
 			var url = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "") +
 				"/sap/opu/odata/sap/ZSY_HR_PRE_ENTRY_SRV/" + entrySet;
 			this._url = url;
@@ -1304,14 +1305,14 @@ sap.ui.define([
 				contentType: "application/json",
 				dataType: 'json',
 
-				success: function (data, textStatus, jqXHR) {
+				success: function(data, textStatus, jqXHR) {
 					that._csrfToken = jqXHR.getResponseHeader('x-csrf-token');
 					return that._csrfToken;
 				}
 			});
 		},
 
-		uploadStart: function (oEvent) {
+		uploadStart: function(oEvent) {
 			// Stellen die Kopf Parameter slug
 			var oCustomerHeaderSlug = new sap.m.UploadCollectionParameter({
 				name: "slug",
@@ -1325,11 +1326,11 @@ sap.ui.define([
 		 * This hook is the same one that SAPUI5 controls get after being rendered.
 		 * @memberOf view.ZPreEntryPeopleInfo
 		 */
-		onAfterRendering: function (oEvent) {
+		onAfterRendering: function(oEvent) {
 			this.changeEditable0185();
 
 		},
-		changeEditable0185: function () {
+		changeEditable0185: function() {
 			//that.getView().setModel(new JSONModel(window.oData.navTo0185.results), "MyIdCard");
 			if (window.oData == undefined) {
 				return;
@@ -1349,7 +1350,7 @@ sap.ui.define([
 				}
 			}
 		},
-		handleChangeDate: function (oEvent) {
+		handleChangeDate: function(oEvent) {
 
 			var oModelName, oPath;
 			var oListenViewContext = oEvent.getSource().oPropagatedProperties.oBindingContexts; //get the listen view 
@@ -1372,7 +1373,7 @@ sap.ui.define([
 				oDP.setValueState(sap.ui.core.ValueState.Error);
 			}
 		},
-		handleChangeNumber: function (oEvent) {
+		handleChangeNumber: function(oEvent) {
 
 			var oModelName, oPath;
 			var oListenViewContext = oEvent.getSource().oPropagatedProperties.oBindingContexts; //get the listen view 
@@ -1397,10 +1398,10 @@ sap.ui.define([
 			}
 		},
 
-		onNext: function (oEvent) {
+		onNext: function(oEvent) {
 			this.getView().getModel().odata();
 		},
-		onSave: function (oEvent) {
+		onSave: function(oEvent) {
 			var that = this;
 			var sPath = "/ZEntry_People_DeepSet";
 
@@ -1416,7 +1417,7 @@ sap.ui.define([
 					this._ResourceBundle.getText("oCheckBeforeSave"), {
 						actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
 						styleClass: bCompact ? "sapUiSizeCompact" : "",
-						onClose: function (sAction) {
+						onClose: function(sAction) {
 							if (sAction == 'OK') {
 								that.onSaveOK(that.oReturnTable);
 							}
@@ -1424,7 +1425,7 @@ sap.ui.define([
 					});
 			}
 		},
-		onSaveOK: function (oReturnTable) {
+		onSaveOK: function(oReturnTable) {
 			this.openBusyDialog();
 			var that = this;
 			var sPath = "/ZEntry_People_DeepSet";
@@ -1447,7 +1448,7 @@ sap.ui.define([
 			oReturnTable.FILETYPE11MAX = this.FileType11Max.toString();
 
 			this.oDataModelPreEntry.create(sPath, oReturnTable, { //
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 					that.oBusyDialog.close();
 					// that.oBusyDialog.close();
 					if (oData.Type == 'E') {
@@ -1456,14 +1457,14 @@ sap.ui.define([
 						MessageBox.success('保存成功！');
 					}
 				},
-				error: function (oError) {
+				error: function(oError) {
 					that.oBusyDialog.close();
 					// that.oBusyDialog.close();
 					// that.oInitCheckDialog.close();
 				}
 			});
 		},
-		getSaveTable: function (oPera) {
+		getSaveTable: function(oPera) {
 			var oReturnTable = this.onInitData();
 			var oTableModel, oTableData;
 			this.oError = "";
@@ -1490,6 +1491,7 @@ sap.ui.define([
 				oReturnTable.navTo3531 = this.getDataFromModel("Language");
 			}
 			var oFlag = "";
+			var oFlag1 = "";
 			if (this.oError != "E") {
 				var oPhotoUrl = this.getView().getModel("PersonInfo").oData.PhotoUrl;
 				var oPhotoUrlArr = oPhotoUrl.split("/");
@@ -1500,112 +1502,213 @@ sap.ui.define([
 				}
 			}
 
-			if (this.oError != "E") {
-				if (oReturnTable.navTo0006.length <= 0) {
-					this.oError = 'E';
-					this.oMessage = this._ResourceBundle.getText("oError0006IsNull");
-				} else {
-					oFlag = "";
-					// check 0006 = 10
-					for (var i = 0; i < oReturnTable.navTo0006.length; i++) {
-						if (oReturnTable.navTo0006[i].ANSSA == "2") {
-							oFlag = "X";
-							break;
-						}
-					}
-					if (oFlag == "") {
+			if (oPera != "Save") {
+				if (this.oError != "E") {
+					if (oReturnTable.navTo0006.length <= 0) {
 						this.oError = 'E';
-						this.oMessage = this._ResourceBundle.getText("oError0006_10IsNull");
-					}
-				}
-			}
+						this.oMessage = this._ResourceBundle.getText("oError0006IsNull");
+					} else {
+						oFlag = "";
+						oFlag1 = "";
+						// check 0006 = 10
+						for (var i = 0; i < oReturnTable.navTo0006.length; i++) {
 
-			// 0185
-			if (this.oError != "E") {
-				var oFlag0185 = 0,
-					hash = {};
-				if (oReturnTable.navTo0185.length <= 0) {
-					this.oError = 'E'; //至少要有一行证件信息
-					this.oMessage = this._ResourceBundle.getText("oError0185IsNull");
-				} else {
-					for (var i = 0; i < oReturnTable.navTo0185.length; i++) {
-						if (hash[oReturnTable.navTo0185[i].ICTYP]) {
-							this.oError = 'E'; //不能存在同样的证件类型
-							this.oMessage = this._ResourceBundle.getText("oError0185SameIsNull");
-							break;
-						}
-						// 不存在该元素，则赋值为true，可以赋任意值，相应的修改if判断条件即可
-						hash[oReturnTable.navTo0185[i].ICTYP] = true;
-
-						if (oReturnTable.navTo0185[i].USEFR > oReturnTable.navTo0185[i].USETO) {
-							this.oError = 'E'; //有效开始日期大于有效截至日期
-							this.oMessage = this._ResourceBundle.getText("oError0185DatumIsError");
-							break;
-						}
-					}
-				}
-			}
-
-			// 0022
-			if (this.oError != "E") {
-				if (oReturnTable.navTo0022.length <= 0) {
-					this.oError = 'E';
-					// 至少要有一行教育
-					this.oMessage = this._ResourceBundle.getText("oError0022IsNull");
-				} else {
-					// 有且仅有一条最高学历为空的
-					// if (oReturnTable.navTo0022.length == 1) {
-					// 	if (oReturnTable.navTo0022[0].ACAQM != 'X') {
-					// 		this.oError = 'E';
-					// 		// 至少要有一行教育
-					// 		this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
-					// 	}
-					// 	if (oReturnTable.navTo0022[0].ZHR_RXRQ > oReturnTable.navTo0022[0].BEGDA) {
-					// 		this.oError = 'E';
-					// 		// 入学日期大于毕业日期
-					// 		this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
-					// 	}
-					// } else {
-					var oFlag0022 = 0;
-					var oDate = new Date(),
-						oDateTime = oDate.getFullYear().toString() + (oDate.getMonth() + 1) + oDate.getDate().toString();
-					for (var i = 0; i < oReturnTable.navTo0022.length; i++) {
-						if (oReturnTable.navTo0022[i].ACAQM == 'X') {
-							oFlag0022++;
-							if (oFlag0022 > 1) {
+							if (oReturnTable.navTo0006[i].ANSSA == "2") {
+								oFlag = "X";
 								break;
 							}
 						}
-						if (oReturnTable.navTo0022[i].ZHR_RXRQ > oReturnTable.navTo0022[i].BEGDA) {
-							this.oError = 'E';
-							// 入学日期大于毕业日期
-							this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
-						}
-						if (oReturnTable.navTo0022[i].ZHR_RXRQ > oDateTime) {
-							this.oError = 'E';
-							// 入学日期大于毕业日期
-							this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError1");
-						}
-						// 发现实习生的毕业日期有可能是未来的，注释
-						// if (oReturnTable.navTo0022[i].BEGDA > oDateTime) {
-						// 	this.oError = 'E';
-						// 	// 毕业日期不能大于今天
-						// 	this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError2");
-						// }
 
-					}
-					if (oFlag0022 == 0) {
-						this.oError = 'E';
-						// 至少要有一行教育
-						this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
-					} else if (oFlag0022 > 1) {
-						this.oError = 'E';
-						// 最多只能有一条最高学历
-						this.oMessage = this._ResourceBundle.getText("oError0022Flag2IsNull");
+						for (var i = 0; i < oReturnTable.navTo0006.length; i++) {
+
+							if (this.checkBeforeSave(oReturnTable.navTo0006[i].LOCAT).trim() == "") {
+								oFlag1 = "X";
+								break;
+							}
+
+						}
+
+						if (oFlag == "") {
+							this.oError = 'E';
+							this.oMessage = this._ResourceBundle.getText("oError0006_10IsNull");
+						}
+
+						if (oFlag1 == "X") {
+							this.oError = 'E';
+							this.oMessage = this._ResourceBundle.getText("oError0006LOCATIsNull");
+						}
 
 					}
 				}
-				// }
+
+				// 0022
+				if (this.oError != "E") {
+					if (oReturnTable.navTo0022.length <= 0) {
+						this.oError = 'E';
+						// 至少要有一行教育
+						this.oMessage = this._ResourceBundle.getText("oError0022IsNull");
+					} else {
+						// 有且仅有一条最高学历为空的
+						// if (oReturnTable.navTo0022.length == 1) {
+						// 	if (oReturnTable.navTo0022[0].ACAQM != 'X') {
+						// 		this.oError = 'E';
+						// 		// 至少要有一行教育
+						// 		this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
+						// 	}
+						// 	if (oReturnTable.navTo0022[0].ZHR_RXRQ > oReturnTable.navTo0022[0].BEGDA) {
+						// 		this.oError = 'E';
+						// 		// 入学日期大于毕业日期
+						// 		this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
+						// 	}
+						// } else {
+						var oFlag0022 = 0;
+						var oDate = new Date(),
+							oDateTime = oDate.getFullYear().toString() + (oDate.getMonth() + 1) + oDate.getDate().toString();
+						for (var i = 0; i < oReturnTable.navTo0022.length; i++) {
+							if (oReturnTable.navTo0022[i].ACAQM == 'X') {
+								oFlag0022++;
+								if (oFlag0022 > 1) {
+									break;
+								}
+							}
+							if (oReturnTable.navTo0022[i].ZHR_RXRQ > oReturnTable.navTo0022[i].BEGDA) {
+								this.oError = 'E';
+								// 入学日期大于毕业日期
+								this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
+							}
+							if (oReturnTable.navTo0022[i].ZHR_RXRQ > oDateTime) {
+								this.oError = 'E';
+								// 入学日期大于毕业日期
+								this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError1");
+							}
+							// 发现实习生的毕业日期有可能是未来的，注释
+							// if (oReturnTable.navTo0022[i].BEGDA > oDateTime) {
+							// 	this.oError = 'E';
+							// 	// 毕业日期不能大于今天
+							// 	this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError2");
+							// }
+
+						}
+						if (oFlag0022 == 0) {
+							this.oError = 'E';
+							// 至少要有一行教育
+							this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
+						} else if (oFlag0022 > 1) {
+							this.oError = 'E';
+							// 最多只能有一条最高学历
+							this.oMessage = this._ResourceBundle.getText("oError0022Flag2IsNull");
+
+						}
+					}
+					// }
+				}
+
+				// 0021
+				if (this.oError != "E") {
+					if (oReturnTable.navTo0021.length <= 0) {
+						this.oError = 'E';
+						// 至少要有一行家庭成员信息
+						this.oMessage = this._ResourceBundle.getText("oError0021IsNull");
+					}
+				}
+
+				// 0022
+				if (this.oError != "E") {
+					if (oReturnTable.navTo0022.length <= 0) {
+						this.oError = 'E';
+						// 至少要有一行教育
+						this.oMessage = this._ResourceBundle.getText("oError0022IsNull");
+					} else {
+						// 有且仅有一条最高学历为空的
+						// if (oReturnTable.navTo0022.length == 1) {
+						// 	if (oReturnTable.navTo0022[0].ACAQM != 'X') {
+						// 		this.oError = 'E';
+						// 		// 至少要有一行教育
+						// 		this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
+						// 	}
+						// 	if (oReturnTable.navTo0022[0].ZHR_RXRQ > oReturnTable.navTo0022[0].BEGDA) {
+						// 		this.oError = 'E';
+						// 		// 入学日期大于毕业日期
+						// 		this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
+						// 	}
+						// } else {
+						var oFlag0022 = 0;
+						var oDate = new Date(),
+							oDateTime = oDate.getFullYear().toString() + (oDate.getMonth() + 1) + oDate.getDate().toString();
+						for (var i = 0; i < oReturnTable.navTo0022.length; i++) {
+							if (oReturnTable.navTo0022[i].ACAQM == 'X') {
+								oFlag0022++;
+								if (oFlag0022 > 1) {
+									break;
+								}
+							}
+							if (oReturnTable.navTo0022[i].ZHR_RXRQ > oReturnTable.navTo0022[i].BEGDA) {
+								this.oError = 'E';
+								// 入学日期大于毕业日期
+								this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError");
+							}
+							if (oReturnTable.navTo0022[i].ZHR_RXRQ > oDateTime) {
+								this.oError = 'E';
+								// 入学日期大于毕业日期
+								this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError1");
+							}
+							// 发现实习生的毕业日期有可能是未来的，注释
+							// if (oReturnTable.navTo0022[i].BEGDA > oDateTime) {
+							// 	this.oError = 'E';
+							// 	// 毕业日期不能大于今天
+							// 	this.oMessage = this._ResourceBundle.getText("oError0022DatumIsError2");
+							// }
+
+						}
+						if (oFlag0022 == 0) {
+							this.oError = 'E';
+							// 至少要有一行教育
+							this.oMessage = this._ResourceBundle.getText("oError0022Flag0IsNull");
+						} else if (oFlag0022 > 1) {
+							this.oError = 'E';
+							// 最多只能有一条最高学历
+							this.oMessage = this._ResourceBundle.getText("oError0022Flag2IsNull");
+
+						}
+					}
+					// }
+				}
+
+				// 0105
+				if (this.oError != "E") {
+					if (oReturnTable.navTo0105.length <= 0) {
+						this.oError = 'E';
+						// 至少要有一通讯信息
+						this.oMessage = this._ResourceBundle.getText("oError0105IsNull");
+					}
+				}
+
+				// 0185
+				if (this.oError != "E") {
+					var oFlag0185 = 0,
+						hash = {};
+					if (oReturnTable.navTo0185.length <= 0) {
+						this.oError = 'E'; //至少要有一行证件信息
+						this.oMessage = this._ResourceBundle.getText("oError0185IsNull");
+					} else {
+						for (var i = 0; i < oReturnTable.navTo0185.length; i++) {
+							if (hash[oReturnTable.navTo0185[i].ICTYP]) {
+								this.oError = 'E'; //不能存在同样的证件类型
+								this.oMessage = this._ResourceBundle.getText("oError0185SameIsNull");
+								break;
+							}
+							// 不存在该元素，则赋值为true，可以赋任意值，相应的修改if判断条件即可
+							hash[oReturnTable.navTo0185[i].ICTYP] = true;
+
+							if (oReturnTable.navTo0185[i].USEFR > oReturnTable.navTo0185[i].USETO) {
+								this.oError = 'E'; //有效开始日期大于有效截至日期
+								this.oMessage = this._ResourceBundle.getText("oError0185DatumIsError");
+								break;
+							}
+						}
+					}
+				}
+				
 			}
 
 			// // 0023
@@ -1616,15 +1719,6 @@ sap.ui.define([
 			// 		this.oMessage = this._ResourceBundle.getText("oError0023IsNull");
 			// 	}
 			// }
-
-			// 0021
-			if (this.oError != "E") {
-				if (oReturnTable.navTo0021.length <= 0) {
-					this.oError = 'E';
-					// 至少要有一行家庭成员信息
-					this.oMessage = this._ResourceBundle.getText("oError0021IsNull");
-				}
-			}
 
 			// 0023
 			if (this.oError != "E") {
@@ -1643,20 +1737,9 @@ sap.ui.define([
 				}
 			}
 
-			// 0105
-			if (this.oError != "E") {
-				if (oReturnTable.navTo0105.length <= 0) {
-					this.oError = 'E';
-					// 至少要有一通讯信息
-					this.oMessage = this._ResourceBundle.getText("oError0105IsNull");
-				}
-			}
-
-			// if(this.oError != "E")
-
 			return oReturnTable;
 		},
-		getDataFromModel: function (ModelName) {
+		getDataFromModel: function(ModelName) {
 
 			var oTableModel = this.getView().getModel(ModelName);
 			if (oTableModel == undefined) {
@@ -1763,7 +1846,7 @@ sap.ui.define([
 					// 个人数据-政治面貌
 					var pcode = this.getView().byId("POLITICAL").getSelectedKey();
 					// oReturnTableRow.PCODE_DESC = this.getView().byId("POLITICAL").getSelectedItem() != null ? this.getView().byId("POLITICAL").getSelectedItem()
-						// .mProperties.text : "";
+					// .mProperties.text : "";
 					if (pcode == "") {
 						this.oError = 'E';
 						this.oMessage = this._ResourceBundle.getText("oError0001PCODEIsNull");
@@ -2541,7 +2624,7 @@ sap.ui.define([
 			}
 			return oReturnTable;
 		},
-		getDataFromModelSave: function (ModelName) {
+		getDataFromModelSave: function(ModelName) {
 
 			var oTableModel = this.getView().getModel(ModelName);
 			if (oTableModel == undefined) {
@@ -2767,6 +2850,7 @@ sap.ui.define([
 							return;
 						}
 
+						oReturnTableRow.PERNR = this.checkBeforeSave(this.Pernr);
 						oReturnTableRow.BEGDA = this.checkBeforeSave(oTableData[i].BEGDA);
 						oReturnTableRow.ENDDA = this.checkBeforeSave(oTableData[i].ENDDA);
 						oReturnTableRow.SUBTY = this.checkBeforeSave(oTableData[i].SUBTY);
@@ -2797,15 +2881,16 @@ sap.ui.define([
 								};
 								oReturnTable.push(oReturnTableRow);
 							}
-						} else {
-							var oCounterNum = this.leadZero(Counter, 2);
-							if (oCounterNum == "01" || oCounterNum == "02" || oCounterNum == "03") {
-								var oI18nName = "oCheckFileIsNull" + oCounterNum;
-								this.oError = 'E';
-								this.oMessage = this._ResourceBundle.getText(oI18nName);
-								// break;
-							}
 						}
+						// else {
+						// 	var oCounterNum = this.leadZero(Counter, 2);
+						// 	if (oCounterNum == "01" || oCounterNum == "02" || oCounterNum == "03") {
+						// 		var oI18nName = "oCheckFileIsNull" + oCounterNum;
+						// 		this.oError = 'E';
+						// 		this.oMessage = this._ResourceBundle.getText(oI18nName);
+						// 		// break;
+						// 	}
+						// }
 						Counter++;
 					}
 
@@ -2813,7 +2898,7 @@ sap.ui.define([
 			}
 			return oReturnTable;
 		},
-		checkBeforeSave: function (oTableDataFile) {
+		checkBeforeSave: function(oTableDataFile) {
 			return oTableDataFile == undefined ? "" : oTableDataFile;
 		},
 		// checkAndShowMsg: function(oField, oViewId, oFieldId, oMsg) {
@@ -2830,7 +2915,7 @@ sap.ui.define([
 		// 	return checkFlag;
 		// },
 
-		onSumbit: function (oEvent) {
+		onSumbit: function(oEvent) {
 
 			var that = this;
 
@@ -2844,7 +2929,7 @@ sap.ui.define([
 					this._ResourceBundle.getText("oCheckBeforeSumbit"), {
 						actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
 						styleClass: bCompact ? "sapUiSizeCompact" : "",
-						onClose: function (sAction) {
+						onClose: function(sAction) {
 							if (sAction == 'OK') {
 								that.onSumbitOK(that.oReturnTable);
 							}
@@ -2853,7 +2938,7 @@ sap.ui.define([
 			}
 
 		},
-		onSumbitOK: function (oReturnTable) {
+		onSumbitOK: function(oReturnTable) {
 
 			this.openBusyDialog();
 			var that = this;
@@ -2887,7 +2972,7 @@ sap.ui.define([
 			oReturnTable.FILETYPE10MAX = this.FileType10Max.toString();
 			oReturnTable.FILETYPE11MAX = this.FileType11Max.toString();
 			this.oDataModelPreEntry.create(sPath, oReturnTable, { //
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 					that.oBusyDialog.close();
 					if (oData.Type == 'E') {
 						that.ShowMessage(oData.Message);
@@ -2896,13 +2981,13 @@ sap.ui.define([
 
 					}
 				},
-				error: function (oError) {
+				error: function(oError) {
 					that.oBusyDialog.close();
 					// that.oInitCheckDialog.close();
 				}
 			});
 		},
-		formatHUKOT: function (oInput) {
+		formatHUKOT: function(oInput) {
 			switch (oInput) {
 				case '1':
 					return '非农业户口';
@@ -2914,7 +2999,7 @@ sap.ui.define([
 					return '';
 			}
 		},
-		formatGESCH: function (oInput) {
+		formatGESCH: function(oInput) {
 			switch (oInput) {
 				case '1':
 					return '男';
@@ -2924,7 +3009,7 @@ sap.ui.define([
 					return '其他';
 			}
 		},
-		ValueHelp: function (oEvent) {
+		ValueHelp: function(oEvent) {
 
 			// this.getView().setBusy(true);
 			var that = this;
@@ -3007,20 +3092,20 @@ sap.ui.define([
 			this._JSONModel.setProperty("/appProperties/fcode", EZf4id, false);
 			this.oDataModelPreEntry.read(sPath, { //
 				filters: oFilters,
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 
 					var oJson = oData.results;
 					that.getView().getModel().setProperty("/searchHelp/f4h2r", oJson);
 					that.openDialog(oEvent);
 					that.getView().setBusy(false);
 				},
-				error: function (error) {
+				error: function(error) {
 					that.getView().setBusy(false);
 				}
 			});
 
 		},
-		ValueHelpTable: function (oEvent) {
+		ValueHelpTable: function(oEvent) {
 			// this.openBusyDialog();
 			// this.getView().setBusy(true);
 			var that = this;
@@ -3156,7 +3241,7 @@ sap.ui.define([
 
 			this.oDataModelPreEntry.read(sPath, { //
 				filters: oFilters,
-				success: function (oData, oResponse) {
+				success: function(oData, oResponse) {
 
 					var oJson = oData.results;
 					that.getView().getModel().setProperty("/searchHelp/f4h2r", oJson);
@@ -3166,13 +3251,13 @@ sap.ui.define([
 					that.openDialog(oEvent);
 					that.getView().setBusy(false);
 				},
-				error: function (error) {
+				error: function(error) {
 					that.oBusyDialog.close();
 					that.getView().setBusy(false);
 				}
 			});
 		},
-		openDialog: function (oEvent) {
+		openDialog: function(oEvent) {
 
 			if (!this._nonCR) {
 				this._nonCR = new searchHelp(this.getView());
@@ -3180,7 +3265,7 @@ sap.ui.define([
 			this._nonCR.openDialog(oEvent);
 			// this.setBusy(false);
 		},
-		handleChange: function (oEvent) {
+		handleChange: function(oEvent) {
 			var oValidatedComboBox = oEvent.getSource(),
 				sSelectedKey = oValidatedComboBox.getSelectedKey(),
 				oValiData = oValidatedComboBox.getItems(),
@@ -3202,7 +3287,7 @@ sap.ui.define([
 			}
 
 		},
-		formatPRE_FILETYPE: function (oInput) {
+		formatPRE_FILETYPE: function(oInput) {
 			var oFileDrop = window.oData.navToDD07T.results; //文件
 			for (var i = 0; i < oFileDrop.length; i++) {
 				if (oFileDrop[i].DomvalueL == this.oUploadFileType) {
@@ -3216,14 +3301,14 @@ sap.ui.define([
 			// 	}
 			// }
 		},
-		formatACAQM: function (oInput) {
+		formatACAQM: function(oInput) {
 			if (oInput == 'X') {
 				return true;
 			} else {
 				return false;
 			}
 		},
-		onChangeEvent: function (oEvent) {
+		onChangeEvent: function(oEvent) {
 			// debugger;
 			// this.getView().setBusy(true);
 			var that = this;
@@ -3253,7 +3338,7 @@ sap.ui.define([
 					break;
 			}
 		},
-		onChangeICNUM: function (oEvent) {
+		onChangeICNUM: function(oEvent) {
 			var oModelName, oPath;
 			var oListenViewContext = oEvent.getSource().oPropagatedProperties.oBindingContexts; //get the listen view 
 			var oPersonInfo = this.getView().getModel("PersonInfo").oData;
@@ -3271,7 +3356,7 @@ sap.ui.define([
 			}
 			this.changeEditable0185();
 		},
-		onChangeGblnd: function (oEvent) {
+		onChangeGblnd: function(oEvent) {
 			var selectKey = oEvent.getSource().getSelectedItem().getKey();
 			// var oStateArr = this.changeZzstate(selectKey);
 			var oDropModel = this.getView().getModel("oDropModel").oData;
@@ -3289,7 +3374,7 @@ sap.ui.define([
 			// zzCityDrop: window.oData.navToCITY.results, //市
 			// zzOrt01Drop: window.oData.navToORT01.results, //县			
 		},
-		changeZzstate: function (Gblnd) {
+		changeZzstate: function(Gblnd) {
 			var oStateArr = [];
 			var oStateArrAll = window.oData.navToSTATE.results;
 			for (var i = 0; i < oStateArrAll.length; i++) {
@@ -3299,7 +3384,7 @@ sap.ui.define([
 			}
 			return oStateArr;
 		},
-		onChangeZzstate: function (oEvent) {
+		onChangeZzstate: function(oEvent) {
 			var oDropModel = this.getView().getModel("oDropModel");
 			var oPersonInfo = this.getView().getModel("PersonInfo").oData;
 			if (oEvent.getSource().getSelectedKey() == "") {
@@ -3316,7 +3401,7 @@ sap.ui.define([
 			oDropModel.refresh();
 
 		},
-		changeZzCity: function (State) {
+		changeZzCity: function(State) {
 			var oStateArr = [];
 			var oCityArrAll = window.oData.navToCITY.results;
 			for (var i = 0; i < oCityArrAll.length; i++) {
@@ -3326,7 +3411,7 @@ sap.ui.define([
 			}
 			return oStateArr;
 		},
-		onChangeZzCity: function (oEvent) {
+		onChangeZzCity: function(oEvent) {
 			var oDropModel = this.getView().getModel("oDropModel");
 			var oPersonInfo = this.getView().getModel("PersonInfo").oData;
 			if (oEvent.getSource().getSelectedKey() == "") {
@@ -3341,7 +3426,7 @@ sap.ui.define([
 			oDropModel.refresh();
 
 		},
-		changeOrt01: function (Ort01) {
+		changeOrt01: function(Ort01) {
 			var oOrt01Arr = [];
 			var oCityArrAll = window.oData.navToORT01.results;
 			for (var i = 0; i < oCityArrAll.length; i++) {
@@ -3352,7 +3437,7 @@ sap.ui.define([
 			return oOrt01Arr;
 
 		},
-		onShowDocument: function (oEvent) {
+		onShowDocument: function(oEvent) {
 			var oParts = oEvent.getSource().mBindingInfos.text.parts[0];
 			var oModelName = oParts.model,
 				oFileName = oEvent.getSource().mProperties.text;
@@ -3395,10 +3480,10 @@ sap.ui.define([
 			// }
 
 		},
-		onCloseImageDialog: function (oEvent) {
+		onCloseImageDialog: function(oEvent) {
 			this.ShowImageDialog.close();
 		},
-		onConfirmPdf: function (oEvent) {
+		onConfirmPdf: function(oEvent) {
 			this.ShowPdfDialog.close();
 		},
 		// formatGBLND:function(oInput){
@@ -3413,7 +3498,7 @@ sap.ui.define([
 		 * Called when the Controller is destroyed. Use this one to free resources and finalize activities.
 		 * @memberOf view.ZPreEntryPeopleInfo
 		 */
-		onExit: function (oEvent) {
+		onExit: function(oEvent) {
 
 		}
 	});

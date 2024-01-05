@@ -17,13 +17,13 @@
                         <f:FormElement label="姓名">
                             <f:fields>
                                 <Input id="Ename" type="Text"  placeholder="输入预入职人员姓名,且区分大小写..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" />
-                                <!-- <Input id="Ename" type="Text"  placeholder="输入预入职人员姓名,且区分大小写..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" value='SH' /> -->
+                                <!-- <Input id="Ename" type="Text"  placeholder="输入预入职人员姓名,且区分大小写..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" value='赵星磊' /> -->
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="手机号">
                             <f:fields>
                                 <Input id="Phone" type="Text" maxLength="11" placeholder="预入职人员手机号..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" />
-                                <!-- <Input id="Phone" type="Text" maxLength="11" placeholder="预入职人员手机号..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" value='15877397232' /> -->
+                                <!-- <Input id="Phone" type="Text" maxLength="11" placeholder="预入职人员手机号..." enabled="true" editable="true" fieldWidth="50%" submit=".onDialogConfirm" value='15958162742' /> -->
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>

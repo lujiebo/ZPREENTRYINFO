@@ -110,24 +110,6 @@
             "name": "view/App.view.xml"
         },
         {
-            "name": ".history/fragment/ShowImageView.fragment.xml"
-        },
-        {
-            "name": ".history/fragment/EducationalView.fragment_20201202090537.xml"
-        },
-        {
-            "name": ".history/fragment/EducationalView.fragment_20201201163428.xml"
-        },
-        {
-            "name": ".history/fragment/FileView.fragment.xml.backup"
-        },
-        {
-            "name": ".history/fragment/EducationalView.fragment_20201202093939.xml"
-        },
-        {
-            "name": ".history/fragment/ShowPdfView.fragment.xml"
-        },
-        {
             "name": "i18n/i18n.properties",
             "raw": "i18n/i18n.properties"
         },

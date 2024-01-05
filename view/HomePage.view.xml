@@ -85,29 +85,29 @@
 										<core:Item key="{oDropModel>Land1}" text="{oDropModel>Landx}" additionalText="{oDropModel>Land1}"/>
 									</m:ComboBox>-->
 									<m:Label id="ZzstateLabel" text="籍贯省"/>
-									<m:Select id="ZZSTATE"  forceSelection="false" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
+									<!-- <m:Select id="ZZSTATE"  forceSelection="false" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
 										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:Select>
+									</m:Select> -->
 									<!--<m:Input id="ZZSTATE_DESC" value="{PersonInfo>/ZZSTATE_DESC}" editable="true"></m:Input>-->
-									<!--<m:ComboBox id="ZZSTATE" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
+									<m:ComboBox id="ZZSTATE" selectedKey="{PersonInfo>/ZZSTATE}" items="{oDropModel>/zzstateDrop}" change="onChangeZzstate">
 										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:ComboBox>-->
+									</m:ComboBox>
 									<m:Label id="ZzcityLabel" text="籍贯市"/>
-									<m:Select id="ZZCITY"  forceSelection="false" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity">
+									<!-- <m:Select id="ZZCITY"  forceSelection="false" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity">
 										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:Select>
+									</m:Select> -->
 									<!--<m:Input id="ZZCITY_DESC" value="{PersonInfo>/ZZCITY_DESC}" editable="true"></m:Input>-->
-									<!--<m:ComboBox id="ZZCITY" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity">
+									<m:ComboBox id="ZZCITY" selectedKey="{PersonInfo>/ZZCITY}" items="{oDropModel>/zzCityDrop}" change="onChangeZzCity"  value="{PersonInfo>/ZZCITY_DESC}">
 										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:ComboBox>-->
+									</m:ComboBox>
 									<m:Label id="Zzort01Label" text="籍贯县"/>
-									<m:Select id="ZZORT01"  forceSelection="false" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}">
+									<!-- <m:Select id="ZZORT01"  forceSelection="false" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}" valueStateText="{PersonInfo>/ZZORT01_DESC}">
 										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:Select>
+									</m:Select> -->
 									<!--<m:Input id="ZZORT01_DESC" value="{PersonInfo>/ZZORT01_DESC}" editable="true"></m:Input>-->
-									<!--<m:ComboBox id="ZZORT01" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}">
-										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}"/>
-									</m:ComboBox>-->
+									<m:ComboBox id="ZZORT01" selectedKey="{PersonInfo>/ZZORT01}" items="{oDropModel>/zzOrt01Drop}" value="{PersonInfo>/ZZORT01_DESC}">
+										<core:Item key="{oDropModel>ZHR_DM}" text="{oDropModel>ZHR_DMMS}" additionalText="{oDropModel>ZHR_DM}" />
+									</m:ComboBox>
 									<!--<m:Input id="GBLND" value="{PersonInfo>/GBLND}" editable="true"></m:Input>-->
 									<m:Label id="Zhr_jjlxrxmLabel" text="紧急联系人姓名"/>
 									<m:Input id="ZHR_JJLXRXM" value="{PersonInfo>/ZHR_JJLXRXM}" editable="true"></m:Input>
