@@ -968,7 +968,7 @@ sap.ui.define([
 
 					var oHeaders = {
 						"x-csrf-token": this._csrfToken,
-						"slug": encodeURIComponent(this.changeFileName()), //this.changeFileName(),
+						"slug": encodeURIComponent(this.changeFileName()), 
 						"filename_old": encodeURIComponent(file.name),
 						"pernr": this.getModel("PersonInfo").oData.PERNR,
 						"is_icon": this.isIcon,
